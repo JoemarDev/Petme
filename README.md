@@ -9,7 +9,7 @@ Implemented Using PetFinder API
 https://www.petfinder.com/developers/
 
 Easily signin using your social account. 
-Gmail,Facebook.
+Gmail ✅ ,Facebook ❌
 
 Technology
 PHP
