@@ -146,7 +146,7 @@
                                                 <div class="content">
                                                     <ul>
                                                         <li><a href="viewpet.php?petID=<?php echo $key->id ?>">view profile</a></li>
-                                                        <li class="share"><a href="#"><span class="icofont-reply"></span></a></li>
+                                                        <li class="share"><a  data-toggle="modal" data-target="#petLoginModal"><span class="icofont-heart-alt"></span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

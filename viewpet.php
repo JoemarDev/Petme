@@ -51,7 +51,6 @@
             header("Refresh:0");
         else:
             $pet = petInfo($petID);
-            var_dump($pet);
         endif;
       
     ?>
