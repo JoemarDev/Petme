@@ -131,3 +131,21 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
  }
 
+
+
+$('.loved-pet').click(function(){
+    let petID = $(this).attr('data-pet-id');
+    $.ajax({
+        'url' : 'lib/pet-endpoint/pet-loved.php',
+        'method' : 'POST',
+        'data' : {'petID' : petID},
+        success:function(data){
+            if (data == '401') {
+               location.reload();
+            } else {
+               alert('SUCCESS');
+            }
+        }
+    })
+
+})

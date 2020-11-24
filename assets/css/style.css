@@ -1369,6 +1369,16 @@ section i {
     -o-transition: all 300ms ease;
 }
 
+.pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a.active{
+    border-color: #e7470c;
+    background-color: #e7470c;
+    cursor: default;
+}
+
+.pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a.active span{
+   color: #ffffff;
+}
+
 .pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a:hover {
     border-color: #e7470c;
     background-color: #e7470c;
@@ -1384,6 +1394,7 @@ section i {
     font-size: 20px;
     line-height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .pet-block .inner-box .image .overlay-box .overlay-inner .content ul li.share a:hover {

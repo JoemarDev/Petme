@@ -147,7 +147,6 @@
                             <img src="assets/images/background/novideo.jpg" class="w-100" style="opacity: 0.2">
                          <?php endif ?>
 
-
                         
                         <?php 
                             $video = $pet->animal->videos;

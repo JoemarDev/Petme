@@ -145,8 +145,34 @@
                                             <div class="overlay-inner">
                                                 <div class="content">
                                                     <ul>
-                                                        <li><a href="viewpet.php?petID=<?php echo $key->id ?>">view profile</a></li>
-                                                        <li class="share"><a  data-toggle="modal" data-target="#petLoginModal"><span class="icofont-heart-alt"></span></a></li>
+                                                        <li><a href="viewpet.php?petID=<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
+                                                        <li class="share">
+                                                            <?php if (isset($_SESSION['access_token'])): ?>
+                                                                <?php 
+                                                                    require 'lib/connection.php';
+                                                                    $petID = $key->id;
+                                                                    $userID = $_SESSION['OAuthID'];
+                                                                    $checkIfLiked = "SELECT * FROM userLikedPet WHERE petID = '$petID' AND userID = '$userID'";
+                                                                    $results = mysqli_query($conn,$checkIfLiked);
+                                                                    if (mysqli_num_rows($results) > 0): ?>
+                                                                        <a type="button" class="active" data-pet-id="<?php echo $key->id ?>">
+                                                                            <span class="icofont-heart-alt"></span>
+                                                                        </a>
+                                                                <?php else: ?>
+
+                                                                    <a type="button" class="loved-pet" data-pet-id="<?php echo $key->id ?>">
+                                                                        <span class="icofont-heart-alt"></span>
+                                                                    </a>
+
+                                                                <?php endif;?>
+                                                              
+                                                            <?php else: ?>
+                                                                <a  data-toggle="modal" data-target="#petLoginModal">
+                                                                    <span class="icofont-heart-alt"></span>
+                                                                </a>
+                                                            <?php endif ?>
+                                                          
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -255,7 +281,7 @@
      <?php endif;?>
 
 
-
+     <?php require 'partials/modal/login-modal.php'; ?>
 	<?php require_once 'partials/footer/footer.php' ?>
 <?php } ?>
 
