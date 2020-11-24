@@ -3,7 +3,7 @@
 A web appilcation about adopting animal and how to take care of them.
 _______________________________________________________________
 
-#System Feautues
+# System Feautues
 
 Implemented Using PetFinder API
 https://www.petfinder.com/developers/
@@ -11,7 +11,7 @@ https://www.petfinder.com/developers/
 Easily signin using your social account. 
 Gmail ✅ ,Facebook ❌
 
-Technology
+# Technology
 PHP
 MYSQL
 Javascript
@@ -19,7 +19,7 @@ HTML5
 CSS
 BOOTSTRAP FRAMEWORK
 
-#GOAL⚠️
+# GOAL⚠️
 
 
 ✅ Home Page
