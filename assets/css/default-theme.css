@@ -1,0 +1,87 @@
+.scroll-to-top, .btn-style-three, .btn-style-six:hover, .mission-section, .btn-style-seven:hover, .product-form .theme-btn, .featured-block-three .inner-box, .emailed-form .theme-btn, .main-slider .tparrows.gyges:hover, .social-icon-four a:hover, .appointment-section, .header-top, .infosection, .news-block .inner-box .image .post-date, .news-block-two .inner-box .image .post-date, .sidebar .search-box .form-group button, .ui-state-active, .ui-widget-content .ui-state-active, .main-menu .navigation > li > ul > li > ul > li > a:hover, .main-menu .navigation > li > ul > li:hover > a, .testimonial-section.style-two .owl-dots .owl-dot.active:before, .blog-single .inner-box .lower-content .title-box .date-box, .pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a:hover {
+    background-color: #e7470c;
+}
+
+#home-banner .tparrows.gyges:hover {
+	background: #e7470c;
+}
+
+.sec-title .icon{
+	color: #e7470c;
+}
+
+
+
+#comment h3 {
+    margin-top: 2%;
+    margin-left: 27%;
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold
+}
+
+#comment .card {
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 40px
+}
+
+#comment img {
+    border-radius: 10px;
+    padding-right: 5px;
+    width: 60px;
+    height: 55px
+}
+
+#comment img:hover {
+    cursor: pointer
+}
+
+#comment .round .align-self-start {
+    border-radius: 100%;
+    width: 45px;
+    height: 40px
+}
+
+#comment .media {
+	border-bottom: 1px solid #e8b75947;
+}
+
+#comment .media .comment {
+    background: #F4F4F4;
+    border: none;
+    border-radius: 10px
+}
+
+#comment h6.user {
+    color: #5C5C5C;
+    font-size: 15px !important;
+    padding-left: 15px !important;
+    margin-bottom: 0
+}
+
+#comment h6.user:hover {
+    cursor: pointer;
+    text-decoration: underline
+}
+
+#comment p.text {
+    margin-bottom: 0;
+    color: #8A8A8A !important;
+    font-size: 14px
+ }
+
+#comment .ml-auto {
+    margin-right: 20px
+}
+
+#comment p .reply {
+    color: #5C5C5C;
+    font-size: 15px
+}
+
+@media screen and (min-width: 576px) {
+    #comment .comment {
+        width: 470px !important
+    }
+}
