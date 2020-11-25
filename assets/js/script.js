@@ -134,7 +134,10 @@ function escapeHtml(unsafe) {
 
 
 $('.loved-pet').click(function(){
+
+    let element = $(this);
     let petID = $(this).attr('data-pet-id');
+    $(this).hide();
     $.ajax({
         'url' : 'lib/pet-endpoint/pet-loved.php',
         'method' : 'POST',
@@ -143,7 +146,9 @@ $('.loved-pet').click(function(){
             if (data == '401') {
                location.reload();
             } else {
-               alert('SUCCESS');
+               element.show();
+               element.addClass('active')
+               element.removeClass('loved-pet')
             }
         }
     })

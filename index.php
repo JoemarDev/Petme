@@ -11,14 +11,14 @@
 	  	<div class="carousel-inner">
 
 	    	<div class="carousel-item active">
-	    		<div class="banner-content">
+	    		<div class="banner-content text-white">
 	    			<h2>We Give Special Care <br> to Your Loving Pets </h2>
 	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>
 	    			tempor incididunt ut labore et dolore magna aliqua.</p>
 
 	    			<a href="/" class="theme-btn btn-style-two">Book Appointment</a>
 	    		</div>
-	      		<img class="d-block w-100" src="assets/images/carousel/image-1.jpg" alt="First slide">
+	      		<img class="d-block w-100" src="assets/images/carousel/image-1.jpg" style="max-height: 600px;  object-fit: cover;" alt="First slide">
 	    	</div>
 
 	    	<div class="carousel-item">
@@ -29,7 +29,7 @@
 
 	    			<a href="/" class="theme-btn btn-style-two">Book Appointment</a>
 	    		</div>
-	      		<img class="d-block w-100" src="assets/images/carousel/image-2.jpg" alt="Second slide">
+	      		<img class="d-block w-100" src="assets/images/carousel/image-2.jpg" style="max-height: 600px; object-fit: cover;" alt="Second slide">
 	    	</div>
 	  	</div>
 	  	<a class="carousel-control-prev tparrows gyges" href="#home-banner" role="button" data-slide="prev">

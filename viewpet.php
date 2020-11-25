@@ -10,48 +10,76 @@
 
         $animals = null;
 
-        $petID = $_GET['petID'];
+        if (isset($_GET['petID'])):
+            $petID = $_GET['petID'];
 
-        function petInfo($id){
-            $curl = curl_init();
-            $url = 'https://api.petfinder.com/v2/animals/'.$id;
-            $token = $_COOKIE['API_TOKEN'];
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_HTTPHEADER,[
-                'Authorization : Bearer '.$token,
-            ]);
-            $result = curl_exec($curl);
-            curl_close($curl);
-            $animals = json_decode($result);
-            return $animals;
-        }
-
-        function valueCheck($str) {
-            if (strlen($str) > 0 AND $str != null) {
-                return $str;
-            } else {
-                return "Not Available";
+            // Check if the pet ID is exist in the databases
+            $isSave = false;
+            $trimPetID = '';
+            if (substr($petID,0,5) == 'save-') {
+               $isSave = true;
+               $trimID = substr($petID,5);
             }
-        }
+            
 
-        function boolAttr($res){
-            if ($res) {
-                return "Yes";
-            } else {
-                return "No";
+            function petInfo($id){
+                $curl = curl_init();
+                $url = 'https://api.petfinder.com/v2/animals/'.$id;
+                $token = $_COOKIE['API_TOKEN'];
+                curl_setopt($curl, CURLOPT_URL, $url);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_HTTPHEADER,[
+                    'Authorization : Bearer '.$token,
+                ]);
+                $result = curl_exec($curl);
+                curl_close($curl);
+                $animals = json_decode($result);
+                return $animals;
             }
-        }
 
-        // Check if TOKEN Exist Create one if none.
-        require 'lib/Authenticate/createToken.php';
+            function valueCheck($str) {
+                if (strlen($str) > 0 AND $str != null) {
+                    return $str;
+                } else {
+                    return "Not Available";
+                }
+            }
 
-        if (empty($_COOKIE['API_TOKEN'])):
-            createToken();
-            header("Refresh:0");
-        else:
-            $pet = petInfo($petID);
+            function boolAttr($res){
+                if ($res) {
+                    return "Yes";
+                } else {
+                    return "No";
+                }
+            }
+
+
+            
+            if ($isSave) {
+                // If the pet info is exist then fetch from the database
+
+                require 'lib/connection.php';
+                $sql = "SELECT * FROM likedpet WHERE petID = '$trimID'";
+                $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                $result = mysqli_fetch_assoc($result);
+
+                $pet = unserialize($result['petObject']);
+            } else {     
+
+
+                // Check if TOKEN Exist Create one if none.
+                require 'lib/Authenticate/createToken.php';
+
+                // if not exist in the database fetch from the API
+                if (empty($_COOKIE['API_TOKEN'])):
+                    createToken();
+                    header("Refresh:0");
+                else:
+                    $pet = petInfo($petID);
+                endif;
+            }
         endif;
+
       
     ?>
 
@@ -110,8 +138,6 @@
     
 
     <?php if (isset($pet->animal)): ?>
-
-
 
         <section class="pet-image">
             <div class="container mt-5">

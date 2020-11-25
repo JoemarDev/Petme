@@ -48,10 +48,10 @@ PHP | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 ❌ 4.Update and Delete comment.
 
 
-❌ 5.Can like pet in Pet Page And Save it in the database as Serialize Object.
+☑️  5.Can like pet in Pet Page And Save it in the database as Serialize Object.
 
 
-❌ 6.Create a profile page show what pet did you like Fetch from the Database.
+☑️  6.Create a profile page show what pet did you like Fetch from the Database.
 
 
 ❌ 7.Connecting Paypal To the Donation Button.

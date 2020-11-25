@@ -38,10 +38,9 @@
 		 				<li onclick="window.location.href='pet.php'">PETS</li>
 		 				<li>BLOG</li>
 		 				<li onclick="window.location.href='contact.php'">CONTACT</li>
-
 		 				<?php if (isset($_SESSION['access_token'])): ?>
-<!-- s -->
-		 					<li onclick="window.location.href='lib/logout.php'">LOGOUT</li>
+		 					<li onclick="window.location.href='profile.php'">ACCOUNT</li>
+		 					<li onclick="window.location.href='lib/logout.php'"><i class="icofont-sign-out"></i></li>
 	 					<?php else: ?>
 	 						<li onclick="window.location.href='login.php'">LOGIN</li>
 		 				<?php endif ?>

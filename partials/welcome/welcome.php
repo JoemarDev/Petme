@@ -10,7 +10,7 @@
 	        </div>
 	        <div class="row mt-5">
 	        	<div class="col-md-6 text-center">
-	        		<img class="img-fluid" src="assets/images/home/welcome.jpg">
+	        		<img class="img-fluid" src="assets/images/home/welcome.jpg" style="max-height:500px;">
 	        	</div>
 	        	<div class="col-md-6">
 	        		<p>We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.</p>

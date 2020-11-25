@@ -1705,7 +1705,15 @@ ul.petdetails li:before {
 }
 
 
+/*PROFILE PET CARD*/
 
+.profile-pet-card {
+    cursor: pointer;
+}
+.profile-pet-card:hover {
+    transform: scale(1.05);
+    transition: all 0.5s;
+}
 
 @media (max-width: 1199.98px) {
 
