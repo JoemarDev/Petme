@@ -3,7 +3,7 @@
 A web appilcation about adopting animal and how to take care of them.
 _______________________________________________________________
 
-# System Feautues
+# System Features
 
 Implemented Using PetFinder API
 https://www.petfinder.com/developers/
