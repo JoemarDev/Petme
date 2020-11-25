@@ -1,4 +1,4 @@
-# Petme ![alt text](https://raw.githubusercontent.com/JoemarDev/Petme/master/assets/images/logo/logo.png)
+![alt text](https://raw.githubusercontent.com/JoemarDev/Petme/master/assets/images/logo/logo.png)
 
 A web appilcation about adopting animal and how to take care of them.
 _______________________________________________________________
