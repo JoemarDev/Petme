@@ -1,6 +1,10 @@
 ![alt text](https://raw.githubusercontent.com/JoemarDev/Petme/master/assets/images/logo/logo.png)
 
-A web appilcation about adopting animal and how to take care of them.
+We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.
+
+We are just a middle man we do our best to find a perfect partner for you. we collect all data from trusted partner so you can see there pets.
+
+We also provide service for your pets near in your area and a discount from our partners.
 _______________________________________________________________
 
 # System Features
