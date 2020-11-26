@@ -12,7 +12,7 @@ Easily signin using your social account.
 Gmail ✅ ,Facebook ❌
 
 # Technology
-PHP | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
+PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
 # GOAL⚠️
 
