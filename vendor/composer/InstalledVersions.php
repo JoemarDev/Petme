@@ -14,24 +14,34 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'aea271e65a87942617c8f412acc95896f45af0dd',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'aea271e65a87942617c8f412acc95896f45af0dd',
+    ),
+    'cloudinary/cloudinary_php' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => 'c01a5dd533bf91bc3fe96f577760ed8f206d33db',
     ),
     'clue/stream-filter' => 
     array (
@@ -184,12 +194,12 @@ private static $installed = array (
     ),
     'php-http/message' => 
     array (
-      'pretty_version' => '1.9.1',
-      'version' => '1.9.1.0',
+      'pretty_version' => '1.10.0',
+      'version' => '1.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '09f3f13af3a1a4273ecbf8e6b27248c002a3db29',
+      'reference' => '39db36d5972e9e6d00ea852b650953f928d8f10d',
     ),
     'php-http/message-factory' => 
     array (

@@ -6,7 +6,6 @@
 
 <?php function getContent() { ?>
 
-
 	<div class="container py-5">
 		<div class="card m-auto py-5" style="max-width: 30rem;">
 			<div class="header text-center mb-3">

@@ -36,7 +36,7 @@
 		 				<li onclick="window.location.href='index.php'">HOME</li>
 		 				<li onclick="window.location.href='about.php'">ABOUT</li>
 		 				<li onclick="window.location.href='pet.php'">PETS</li>
-		 				<li>BLOG</li>
+		 				<li onclick="window.location.href='blog.php'">BLOG</li>
 		 				<li onclick="window.location.href='contact.php'">CONTACT</li>
 		 				<?php if (isset($_SESSION['access_token'])): ?>
 		 					<li onclick="window.location.href='profile.php'">ACCOUNT</li>
@@ -92,7 +92,7 @@
 			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='pet.php'" >
 				<strong>PETS</strong>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;">
+			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='blog.php'">
 				<strong>BLOG</strong>
 			</div>
 			<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='contact.php'">
