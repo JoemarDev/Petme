@@ -30,7 +30,7 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 ✅ Pets Page
 
 
-❌ Blog page
+✅  Blog page
 
 
 ✅ Contact
