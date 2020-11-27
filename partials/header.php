@@ -20,3 +20,6 @@
 <link rel="stylesheet" href="assets/css/icofont/icofont.min.css">
 
 <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/froala_editor.pkgd.min.css">
+<script type="text/javascript" src="assets/js/froala_editor.pkgd.min.js"></script>

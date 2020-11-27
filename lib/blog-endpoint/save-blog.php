@@ -11,18 +11,19 @@
 
 		$blog_title = $_POST['blog-title'];
 		$blog_image_title = $_FILES['blog-image']['name'];
+		$blog_description = mysqli_real_escape_string($conn,$_POST['blog-description']);
 		$blog_content = mysqli_real_escape_string($conn,$_POST['blog-content']);
 		$blog_writer = $_SESSION['user_first_name'];
 		$blog_created = date("Y-m-d H:i:s");
 		$blog_link_1 = $_POST['blog-link-1'];
 		$blog_link_2 = $_POST['blog-link-2'];
+		$blog_seo_title = seoUrl($_POST['blog-title']);
 
 		$linkArr = serialize([$blog_link_1,$blog_link_2]);
 
 
 		// default main image address
 		$blog_image_url = null;
-
 
 		// Check if have a main image uploaded
 		if ($_FILES['blog-image']['size'] > 0):
@@ -47,19 +48,20 @@
 				$blog_image_url = $response['url'];
 			}
 
+			header('location: ../../blog.php');
+
 		endif;
 
 		
 
 		echo $blog_image_url;
 
-		$sql = "INSERT INTO blog(title,content,writer,date,likeCount,commentCount,image,link,isAllowed)
-			VALUES('$blog_title','$blog_content','$blog_writer','$blog_created',0,0,'$blog_image_url','$linkArr',0)";
+		$sql = "INSERT INTO blog(title,content,writer,date,likeCount,commentCount,image,link,isAllowed,seoTitle,description)
+			VALUES('$blog_title','$blog_content','$blog_writer','$blog_created',0,0,'$blog_image_url','$linkArr',0,'$blog_seo_title','$blog_description')";
 
-		mysqli_query($conn,$sql) or die(mysqli_erro($conn));	
+		mysqli_query($conn,$sql) or die(mysqli_error($conn));	
 		
-
-	else:
+	else:		
 		header("HTTP/1.1 401 Unauthorized");
 		exit;
 	endif;
@@ -76,5 +78,19 @@
 	    }
 	    return $randomString;
 	};
+
+
+	function seoUrl($string) {
+	    //Lower case everything
+	    $string = strtolower($string);
+	    //Make alphanumeric (removes all other characters)
+	    $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+	    //Clean up multiple dashes or whitespaces
+	    $string = preg_replace("/[\s-]+/", " ", $string);
+	    //Convert whitespaces and underscore to dash
+	    $string = preg_replace("/[\s_]/", "-", $string);
+	    return $string;
+	}
+
 
  ?>

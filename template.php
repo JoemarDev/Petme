@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php session_start(); ?>
 <html lang="en">
 <head>
 	<?php $host = 'http://localhost/petme/';?>
@@ -23,7 +23,7 @@
 			    return $string;
 			}
 	 ?>
-	<?php session_start(); ?>
+
 	<?php ob_start(); ?>
 	<?php require_once 'partials/nav/nav.php'; ?>
 	<?php getContent(); ?>

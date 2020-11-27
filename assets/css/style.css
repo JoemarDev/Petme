@@ -1715,6 +1715,77 @@ ul.petdetails li:before {
     transition: all 0.5s;
 }
 
+
+/*BLOG SINGLE*/
+
+.blog-read {
+    position: relative;
+}
+
+.blog-read .title-box {
+    position: relative;
+    padding-left: 95px;
+    margin-bottom: 32px;
+    margin-top: 32px;
+}
+
+.blog-read .date-box {
+   position: absolute;
+   left: 0px;
+   top: -5px;
+   width: 75px;
+   height: 75px;
+   font-size: 24px;
+   font-weight: 800;
+   display: block;
+   color: #ffffff;
+   padding-top: 5px;
+   text-align: center;
+   border-radius: 50%;
+       background-color: #e7470c;
+}
+
+.blog-read .date-box span{
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+}
+
+.blog-read .title-box h3{
+    position: relative;
+        color: #222222;
+        font-size: 24px;
+        font-weight: 700;
+}
+
+.blog-read .title-box ul{
+  position: relative;
+      margin-bottom: 18px;
+}
+
+.blog-read .title-box li{
+  position: relative;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 600;
+  padding-right: 12px;
+  margin-right: 8px;
+  line-height: 1em;
+  display: inline-block;
+  border-right: 1px solid #dddddd;
+
+}
+
+.blog-read  .title-box .post-meta li:last-child {
+    border: none;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+
+.blog-read .title-box .post-meta li:first-child {
+    color: #e5a62d!important;
+}
 @media (max-width: 1199.98px) {
 
     .banner-content {

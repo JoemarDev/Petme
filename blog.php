@@ -55,12 +55,9 @@
                                     <li><?php echo $row['likeCount'] ?> Liked</li>
                                 </ul>
                                 <h3><a href="#"><?php echo $row['title'] ?></a></h3>
-                                <?php 
-                                    // strip the base 64 image from the content to produce short description
-                                    $desc = preg_replace("/<img[^>]+\>/i", "", $row['content']);
-                                 ?>
-                                <small class="mb-4" style="display: block;"><?php echo substr($desc, 0, 200) . '...'; ?> </small>
-                                <a href="/" class="theme-btn btn-style-two">Read More</a>
+      
+                                <small class="mb-4" style="display: block;"><?php echo $row['description']. '...'; ?> </small>
+                                <a href="read.php?article=<?php echo seoUrl($row['title']) ?>" class="theme-btn btn-style-two">Read More</a>
                             </div>
                         </div>
                     </div>
