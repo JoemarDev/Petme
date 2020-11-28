@@ -1024,11 +1024,11 @@ section i {
     text-transform: uppercase;
 }
 
-.news-block:nth-child(2) .inner-box .image .post-date {
+.news-block:nth-child(odd) .inner-box .image .post-date {
     background-color: #e5a62d;
 }
 
-.news-block:nth-child(3) .inner-box .image .post-date {
+.news-block:nth-child(even) .inner-box .image .post-date {
     background-color: #630abb;
 }
 
@@ -1786,6 +1786,195 @@ ul.petdetails li:before {
 .blog-read .title-box .post-meta li:first-child {
     color: #e5a62d!important;
 }
+
+.popular-posts .post {
+    position: relative;
+    font-size: 14px;
+    color: #666666;
+    padding: 6px 0px 0px;
+    padding-left: 100px;
+    min-height: 80px;
+    margin-bottom: 25px;
+}
+
+ .popular-posts .post .post-thumb {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 80px;
+}
+
+
+.popular-posts .post .post-thumb img {
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+    height: 80px;
+    object-fit: cover;
+}
+
+.popular-posts .post .post-thumb {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 80px;
+}
+
+.popular-posts .post .text a {
+    color: #222222;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.popular-posts .post-info {
+    font-size: 14px;
+    color: #e7470c;
+    font-weight: 400;
+}
+
+.post-share-options {
+    position: relative;
+    margin-top: 40px;
+    padding: 18px 0px 6px;
+    border-top: 1px solid #d9d9d9;
+}
+
+.social-icon-four .share {
+    position: relative;
+    color: #666666;
+    font-weight: 600;
+    margin-right: 5px;
+    text-transform: uppercase;
+}
+
+
+.social-icon-four a {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    color: #666666;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 32px;
+    margin-left: 8px;
+    background-color: #eeeeee;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+
+
+.comments-area {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    padding-right: 30px;
+}
+
+.comments-area .comment-box {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.comments-area .comment {
+    position: relative;
+    font-size: 14px;
+    padding: 0px 0px 0px 110px;
+}
+
+.comments-area .comment .comment-inner {
+    position: relative;
+}
+
+.comments-area .comment .comment-reply {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: #e7470c;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.comments-area .comment .comment-reply .icon {
+    font-size: 13px;
+    margin-right: 2px;
+}
+
+.comments-area .comment-box .author-thumb {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 90px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.comments-area .comment-box .author-thumb img {
+    display: block;
+}
+
+.comments-area .comment-info {
+    color: #222222;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.comments-area .comment-info span {
+    font-weight: 400;
+    font-size: 16px;
+    color: #777777;
+    margin-left: 22px;
+}
+
+.comments-area .comment .comment-inner .rating {
+    position: relative;
+    font-size: 18px;
+    color: #ffb200;
+}
+
+.comments-area .comment-box .text {
+    color: #444444;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    line-height: 1.9em;
+}
+
+.comments-area .comment-info .comment-time {
+    position: relative;
+    font-size: 12px;
+    color: #666666;
+    margin-left: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.comments-area .comment-box .theme-btn {
+    padding: 5px 30px;
+    font-size: 12px;
+    border: 1px solid #fbca00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+
 @media (max-width: 1199.98px) {
 
     .banner-content {

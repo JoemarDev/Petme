@@ -12,22 +12,20 @@
 
 	    	<div class="carousel-item active">
 	    		<div class="banner-content text-white">
-	    			<h2>We Give Special Care <br> to Your Loving Pets </h2>
-	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>
-	    			tempor incididunt ut labore et dolore magna aliqua.</p>
+	    			<h2>We Help All Homeless And Abused Pets <br>  To Find And Take Care Of Them.</h2>
+	    			<p>we promote all social and website for adoption</p>
 
-	    			<a href="/" class="theme-btn btn-style-two">Book Appointment</a>
+	    			<a href="about.php" class="theme-btn btn-style-two">About Us.</a>
 	    		</div>
 	      		<img class="d-block w-100" src="assets/images/carousel/image-1.jpg" style="max-height: 600px;  object-fit: cover;" alt="First slide">
 	    	</div>
 
 	    	<div class="carousel-item">
 	    		<div class="banner-content">
-	    			<h2 class="text-white">We Give Special Care <br> to Your Loving Pets </h2>
-	    			<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br>
-	    			tempor incididunt ut labore et dolore magna aliqua.</p>
+	    			<h2 class="text-white">We Find Your <br>Possible Buddy </h2>
+	    			<p class="text-white">You can browse a lot of pet who finding a owner!</p>
 
-	    			<a href="/" class="theme-btn btn-style-two">Book Appointment</a>
+	    			<a href="pet.php" class="theme-btn btn-style-two">Find pet</a>
 	    		</div>
 	      		<img class="d-block w-100" src="assets/images/carousel/image-2.jpg" style="max-height: 600px; object-fit: cover;" alt="Second slide">
 	    	</div>

@@ -43,9 +43,12 @@
                         }
                      ?>
                     <div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="0ms">
+                        <div class="inner-box " >
                             <div class="image">
-                                <div class="post-date">25 <span>Feb</span></div>
+                                <?php 
+                                    $date = strtotime($row['date']);
+                                 ?>
+                                <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
                                 <a href="#"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                             </div>
                             <div class="lower-content">

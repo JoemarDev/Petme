@@ -71,9 +71,7 @@
                 if (isset($_GET['page'])) {
                    $page = $_GET['page'];
                 } 
-
-                echo $_GET['page'];
-                // echo 'this is the page'.$page;
+                
                 function initAnimals($page){
                     $curl = curl_init();
 

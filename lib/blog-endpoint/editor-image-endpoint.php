@@ -1,25 +1,31 @@
 <?php 
+	
+	session_start();
+	if (isset($_SESSION['access_token'])) :
+		
+		require '../../vendor/autoload.php';
+		require "cloud-config.php";
 
-	require '../../vendor/autoload.php';
-	require "cloud-config.php";
+		if ($_FILES['file']['name']) {
+		  if (!$_FILES['file']['error']) {
 
-	if ($_FILES['file']['name']) {
-	  if (!$_FILES['file']['error']) {
+		    $blog_image_tmp = $_FILES["file"]["tmp_name"];
+		    $blog_image_name =  generateRandomString(70);
 
-	    $blog_image_tmp = $_FILES["file"]["tmp_name"];
-	    $blog_image_name =  generateRandomString(70);
+		    $response = \Cloudinary\Uploader::upload($blog_image_tmp, array(
+		    	"folder" => 'Petme/Summernote/',
+		    	"public_id" => $blog_image_name));
+		    $blog_image_url = $response['url'];
 
-	    $response = \Cloudinary\Uploader::upload($blog_image_tmp, array(
-	    	"folder" => 'Petme/Summernote/',
-	    	"public_id" => $blog_image_name));
-	    $blog_image_url = $response['url'];
+		    $image = ['link' => $blog_image_url];
+		    echo json_encode($image); 
+		  } else {
+		    echo $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['file']['error'];
+		  }
+		}
 
-	    $image = ['link' => $blog_image_url];
-	    echo json_encode($image); 
-	  } else {
-	    echo $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['file']['error'];
-	  }
-	}
+
+	endif;
 
 	
 	// function for genrate random string

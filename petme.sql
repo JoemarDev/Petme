@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 05:01 AM
+-- Generation Time: Nov 28, 2020 at 01:32 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -24,6 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
+  `title` text DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `writer` text DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `likeCount` int(11) DEFAULT NULL,
+  `commentCount` int(11) DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `link` text DEFAULT NULL,
+  `isAllowed` int(11) DEFAULT NULL,
+  `seoTitle` text DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likedpet`
+--
+
+CREATE TABLE `likedpet` (
+  `id` int(11) NOT NULL,
+  `petID` text DEFAULT NULL,
+  `petName` text DEFAULT NULL,
+  `petObject` text DEFAULT NULL,
+  `petLiked` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `petcomments`
 --
 
@@ -33,6 +68,18 @@ CREATE TABLE `petcomments` (
   `comment` text DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `petid` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userlikedpet`
+--
+
+CREATE TABLE `userlikedpet` (
+  `id` int(11) NOT NULL,
+  `userID` text DEFAULT NULL,
+  `petID` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -56,22 +103,31 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `oauth_provider`, `oauth_uid`, `first_name`, `last_name`, `email`, `gender`, `locale`, `picture`, `created`, `modified`) VALUES
-(3, 'google', '103475552762852955634', 'Joemar', 'GotThis', 'joemarpogi67@gmail.com', '', 'en-GB', 'https://lh3.googleusercontent.com/a-/AOh14GgS152dxAN54aDxciukBZGhZhh4YQriIbCyZKo=s96-c', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'google', '111361352400308369988', 'SIERE', 'TV', 'bacleaanjoemar22@gmail.com', '', 'en', 'https://lh3.googleusercontent.com/a-/AOh14GhrbC4PQu_DHQynkPaHX4WdC_OWHXpv4z3AnZX5=s96-c', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'google', '101786914044571118040', 'Joemar', 'Baclea-an', 'b.joemar123@gmail.com', '', 'en', 'https://lh3.googleusercontent.com/a-/AOh14GjvSD7CMYoX6pbZAgdjut_SBhOyfs_wR1fy2Wwj=s96-c', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `likedpet`
+--
+ALTER TABLE `likedpet`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `petcomments`
 --
 ALTER TABLE `petcomments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userlikedpet`
+--
+ALTER TABLE `userlikedpet`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -85,16 +141,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `likedpet`
+--
+ALTER TABLE `likedpet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `petcomments`
 --
 ALTER TABLE `petcomments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `userlikedpet`
+--
+ALTER TABLE `userlikedpet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

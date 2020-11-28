@@ -1,6 +1,4 @@
-
-
-	<section class="news-section" style="background-image: url(assets/images/background/5.jpg);">
+<section class="news-section" style="background-image: url(assets/images/background/5.jpg);">
 		<div class="container">
 			<div class="sec-title text-center">
 	            <div class="separator">
@@ -10,56 +8,46 @@
 	            <h2>Welcome to PetMe</h2>
 
 	            <div class="row mt-5">
-	            	<div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="0ms">
-                            <div class="image">
-                                <div class="post-date">25 <span>Feb</span></div>
-                                <a href="#"><img class="w-100" src="assets/images/news/news-1.jpg" alt=""></a>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="news-info">
-                                    <li>Pets</li>
-                                    <li>20 comments</li>
-                                </ul>
-                                <h3><a href="#">Some toughly useful much darn ealacious walking before</a></h3>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+	            	<?php 
 
-                    <div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-duration="2000ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                            <div class="image">
-                                <div class="post-date">28 <span>Feb</span></div>
-                                <a href="#"><img class="w-100" src="assets/images/news/news-2.jpg" alt=""></a>
-                            </div>
-                            <div class="lower-content">
-                                <ul class="news-info">
-                                    <li>Grommings</li>
-                                    <li>20 comments</li>
-                                </ul>
-                                <h3><a href="#">Unjustifiably wetted above dalmatian yet skeptic dear precise</a></h3>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                        require 'lib/connection.php';
+                        $fetch_blog = "SELECT * FROM blog";
+                        $blogs = mysqli_query($conn,$fetch_blog) or die(mysqli_error($conn));
 
-                    <div class="news-block col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeInUp animated" data-wow-duration="3000ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 3000ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                            <div class="image">
-                                <div class="post-date">30 <span>Feb</span></div>
-                                <a href="#"><img class="w-100" src="assets/images/news/news-3.jpg" alt=""></a>
+                        while ($row = mysqli_fetch_assoc($blogs)): ?>
+                            <?php 
+                                // Check if the post is have main image
+                                if ($row['image'] == null) {
+                                    $image = 'assets/images/background/blog-place-holder.jpg';
+                                } else {
+                                    $image = $row['image'];
+                                }
+                             ?>
+                            <div class="news-block col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner-box " >
+                                    <div class="image">
+                                        <?php 
+                                            $date = strtotime($row['date']);
+                                         ?>
+                                        <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
+                                        <a href="#"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                    </div>
+                                    <div class="lower-content">
+                                        <ul class="news-info">
+                                            <li>Article By <?php echo $row['writer'] ?></li>
+                                            <li><?php echo $row['commentCount'] ?> Comment</li>
+                                            <li><?php echo $row['likeCount'] ?> Liked</li>
+                                        </ul>
+                                        <h3><a href="#"><?php echo $row['title'] ?></a></h3>
+                    
+                                        <small class="mb-4" style="display: block;"><?php echo $row['description']. '...'; ?> </small>
+                                        <a href="read.php?article=<?php echo seoUrl($row['title']) ?>" class="read-more">Read More</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="lower-content">
-                                <ul class="news-info">
-                                    <li>pets shelter</li>
-                                    <li>20 comments</li>
-                                </ul>
-                                <h3><a href="#">Excited less malicious one soulful sincerely naively much</a></h3>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php endwhile; ?>
+                    
 	            </div>
 	        </div>
 

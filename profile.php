@@ -57,7 +57,12 @@
 		 		 	<div class="col-md-3 mt-3 profile-pet-card">
 		 		 		<a href="viewpet.php?petID=save-<?php echo $petID ?>" target="_petFromProfile">
 			 		 		<div class="card" style="width: 100%;">
-			 		 		  	<img class="card-img-top" src="<?php echo $pet_unserialized->animal->primary_photo_cropped->full ?>" alt="Card image cap" style="height: 400px; object-fit: cover;">
+			 		 			<?php if (isset($pet_unserialized->animal->primary_photo_cropped->full)): ?>
+			 		 				<img class="card-img-top" src="<?php echo $pet_unserialized->animal->primary_photo_cropped->full ?>" alt="Card image cap" style="height: 400px; object-fit: cover;">
+			 		 			<?php else: ?>
+			 		 				<img class="card-img-top" src="assets/images/icon/dog-placeholder.gif" alt="Card image cap" style="height: 400px; object-fit: contain;">
+			 		 			<?php endif ?>
+			 		 		  	
 			 		 		  	<div class="card-body">
 			 		 		    	<p class="card-text text-dark">
 			 		 		    		<?php echo $pet['petName'] ?> 
