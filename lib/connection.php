@@ -5,9 +5,6 @@
 	// $pass = '';
 	// $db = 'petme';
 
-	// $conn = mysqli_connect($host,$user,$pass,$db);
-
-
 	$host = 'localhost';
 	$user = 'u652559563_petme';
 	$pass = 'aA2580!!';
