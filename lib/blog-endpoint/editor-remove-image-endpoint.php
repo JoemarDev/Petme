@@ -4,7 +4,7 @@
 	// CHECK IF THE REQUEST IS FROM LOGIN CLIENT
 	if (isset($_SESSION['access_token'])):
 		//  DELETE IMAGE FROM CLOUDINARY VIA API
-		require '../../vendor/autoload.php';
+		require 'http://' . $_SERVER['HTTP_HOST'] . 'vendor/autoload.php';
 		require "cloud-config.php";
 
 		// Get the image URL
