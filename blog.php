@@ -30,7 +30,7 @@
             <?php 
 
                 require 'lib/connection.php';
-                $fetch_blog = "SELECT * FROM blog";
+                $fetch_blog = "SELECT * FROM blog ORDER by id DESC";
                 $blogs = mysqli_query($conn,$fetch_blog) or die(mysqli_error($conn));
 
                 while ($row = mysqli_fetch_assoc($blogs)): ?>
@@ -49,7 +49,7 @@
                                     $date = strtotime($row['date']);
                                  ?>
                                 <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
-                                <a href="#"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                <a href="read.php?article=<?php echo seoUrl($row['title']) ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                             </div>
                             <div class="lower-content">
                                 <ul class="news-info">
@@ -57,7 +57,7 @@
                                     <li><?php echo $row['commentCount'] ?> Comment</li>
                                     <li><?php echo $row['likeCount'] ?> Liked</li>
                                 </ul>
-                                <h3><a href="#"><?php echo $row['title'] ?></a></h3>
+                                <h3><a href="read.php?article=<?php echo seoUrl($row['title']) ?>"><?php echo $row['title'] ?></a></h3>
       
                                 <small class="mb-4" style="display: block;"><?php echo $row['description']. '...'; ?> </small>
                                 <a href="read.php?article=<?php echo seoUrl($row['title']) ?>" class="theme-btn btn-style-two">Read More</a>
@@ -65,9 +65,9 @@
                         </div>
                     </div>
 
-            <?php endwhile; ?>
+            <?php endwhile; ?>  
            
-
+            
 
         </div>
 
@@ -81,5 +81,5 @@
 
 
 <script type="text/javascript">
-    $('.header-menu').find('li').eq(3).addClass('active')
+    $('.header-menu').find('li').eq(2).addClass('active')
 </script>

@@ -34,8 +34,13 @@
 		 <div class="text-center py-2">
 		 	<h2><?php echo $_SESSION['user_first_name'] ?> <?php echo $_SESSION['user_last_name'] ?></h2>
 		 </div>
-
-		 <h3>Pet's you loved!</h3>
+		 <?php 
+		 	require 'lib/connection.php';
+		 	$user_ID = $_SESSION['OAuthID'];
+		 	$countPet = "SELECT * FROM userlikedpet WHERE userID = '$user_ID'";
+		 	$count = mysqli_query($conn,$countPet) or die(mysqli_error($conn));
+		  ?>
+		 <h3>You loved <?php echo mysqli_num_rows($count) ?> Pet's!</h3>
 		 <hr>
 		 <div class="row">
 		 	
@@ -82,5 +87,5 @@
 <?php } ?>
 
 <script type="text/javascript">
-    $('.header-menu').find('li').eq(5).addClass('active')
+    $('.header-menu').find('li').eq(3).addClass('active')
 </script>

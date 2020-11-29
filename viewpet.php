@@ -16,11 +16,13 @@
             // Check if the pet ID is exist in the databases
             $isSave = false;
             $trimPetID = '';
+            $toBesave = true;
+
             if (substr($petID,0,5) == 'save-') {
                $isSave = true;
                $trimID = substr($petID,5);
+               $toBesave = false;
             }
-            
 
             function petInfo($id){
                 $curl = curl_init();
@@ -52,9 +54,7 @@
                     return "No";
                 }
             }
-
-
-            
+ 
             if ($isSave) {
                 // If the pet info is exist then fetch from the database
 
@@ -359,6 +359,9 @@
         
                       
         </section>
+
+        
+        <?php require_once  'partials/news/news.php' ?> 
     <?php else: ?>
 
         <div class="w-100 py-5 text-center">
@@ -369,6 +372,29 @@
     <?php endif ?>
     <hr>
 	<?php require_once 'partials/footer/footer.php' ?>
+
+    <?php if ($toBesave): ?>
+        <script type="text/javascript">
+            $.ajax({
+                'url' : 'lib/pet-endpoint/pet-save.php',
+                'method' : 'POST',
+                'data' : {'petID' : '<?php echo $petID; ?>' , 'notLiked' : true},
+                success:function(data){
+                    
+                    let URL = window.location.href; 
+                    let index = URL.search("petID") + 6;
+                    // var result = "foo baz".splice(4, 0, "bar ");
+                    var result = URL.slice(0, index) + "save-" + URL.slice(index);
+
+                    window.history.replaceState('View Pet', 'PET ME | Pet Information', result);
+
+
+                    console.log(result)
+                }
+            });
+        </script>
+
+    <?php endif ?>
     
 <?php } ?>
 

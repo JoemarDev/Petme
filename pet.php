@@ -134,7 +134,7 @@
                     <?php if ($length > 0) : ?>
                         <?php foreach ($animals->animals as $key): ?>
                             <!--Pets Block-->
-                            <div class="pet-block col-md-4 col-lg-3  col-6 col-xs-12">
+                            <div class="pet-block col-md-4 col-lg-3  col-12 col-xs-12">
                                 <div class="inner-box">
                                     <div class="image">
                                         <?php if ($key->primary_photo_cropped != null) : ?>
@@ -147,7 +147,20 @@
                                             <div class="overlay-inner">
                                                 <div class="content">
                                                     <ul>
-                                                        <li><a href="viewpet.php?petID=<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
+                                                        <?php 
+                                                            require 'lib/connection.php';
+                                                            $petID = $key->id;
+                                                            $checkIfSaved = "SELECT * FROM likedpet WHERE petID = '$petID'";
+                                                            $exist = mysqli_query($conn,$checkIfSaved) or die(mysqli_query($conn));
+
+                                                            $count = mysqli_num_rows($exist);
+                                                         ?>
+                                                        <?php if ($count > 0): ?>
+                                                            <li><a href="viewpet.php?petID=save-<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
+                                                        <?php else: ?>
+                                                            <li><a href="viewpet.php?petID=<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
+                                                        <?php endif ?>
+                                                        
                                                         <li class="share">
                                                             <?php if (isset($_SESSION['access_token'])): ?>
                                                                 <?php 
@@ -157,7 +170,7 @@
                                                                     $checkIfLiked = "SELECT * FROM userLikedPet WHERE petID = '$petID' AND userID = '$userID'";
                                                                     $results = mysqli_query($conn,$checkIfLiked);
                                                                     if (mysqli_num_rows($results) > 0): ?>
-                                                                        <a type="button" class="active" data-pet-id="<?php echo $key->id ?>">
+                                                                        <a type="button" class="active unloved-pet" data-pet-id="<?php echo $key->id ?>">
                                                                             <span class="icofont-heart-alt"></span>
                                                                         </a>
                                                                 <?php else: ?>
@@ -283,11 +296,11 @@
      <?php endif;?>
 
 
-     <?php require 'partials/modal/login-modal.php'; ?>
+    
 	<?php require_once 'partials/footer/footer.php' ?>
 <?php } ?>
 
 
 <script type="text/javascript">
-    $('.header-menu').find('li').eq(2).addClass('active')
+    $('.header-menu').find('li').eq(1).addClass('active')
 </script>

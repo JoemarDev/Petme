@@ -5,7 +5,7 @@
 	            <div class="separator">
 	                <span class="icon"><i class="icofont-paw"></i></span>
 	            </div>
-	            <div class="title">Because We Really Care About Your Pets</div>
+	            <div class="title">Because We Really Care About Pets</div>
 	            <h2>Welcome to PETME</h2>
 	        </div>
 	        <div class="row mt-5">

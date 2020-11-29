@@ -148,9 +148,31 @@ $('.loved-pet').click(function(){
             } else {
                element.show();
                element.addClass('active')
+               element.addClass('unlove-pet')
                element.removeClass('loved-pet')
             }
         }
     })
 
+})
+
+$('.unloved-pet').click(function(){
+    let element = $(this);
+    let petID = $(this).attr('data-pet-id');
+    $(this).hide();
+    $.ajax({
+        'url' : 'lib/pet-endpoint/pet-unloved.php',
+        'method' : 'POST',
+        'data' : {'petID' : petID},
+        success:function(data){
+            if (data == '401') {
+               location.reload();
+            } else {
+               element.show();
+               element.addClass('love-pet')
+               element.removeClass('active')
+               element.removeClass('unlove-pet')
+            }
+        }
+    })
 })

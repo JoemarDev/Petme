@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2020 at 01:32 PM
+-- Generation Time: Nov 29, 2020 at 01:01 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -40,6 +40,20 @@ CREATE TABLE `blog` (
   `isAllowed` int(11) DEFAULT NULL,
   `seoTitle` text DEFAULT NULL,
   `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogcomments`
+--
+
+CREATE TABLE `blogcomments` (
+  `id` int(11) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `blogComment` text DEFAULT NULL,
+  `userID` text DEFAULT NULL,
+  `created` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -113,6 +127,12 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `blogcomments`
+--
+ALTER TABLE `blogcomments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `likedpet`
 --
 ALTER TABLE `likedpet`
@@ -144,6 +164,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `blogcomments`
+--
+ALTER TABLE `blogcomments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

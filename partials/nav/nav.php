@@ -34,10 +34,8 @@
 		 		<div class="float-right">
 		 			<ul class="header-menu">
 		 				<li onclick="window.location.href='index.php'">HOME</li>
-		 				<li onclick="window.location.href='about.php'">ABOUT</li>
 		 				<li onclick="window.location.href='pet.php'">PETS</li>
 		 				<li onclick="window.location.href='blog.php'">BLOG</li>
-		 				<li onclick="window.location.href='contact.php'">CONTACT</li>
 		 				<?php if (isset($_SESSION['access_token'])): ?>
 		 					<li onclick="window.location.href='profile.php'">ACCOUNT</li>
 		 					<li onclick="window.location.href='lib/logout.php'"><i class="icofont-sign-out"></i></li>

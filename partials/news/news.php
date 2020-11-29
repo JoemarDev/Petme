@@ -4,14 +4,14 @@
 	            <div class="separator">
 	                <span class="icon"><i class="icofont-paw"></i></span>
 	            </div>
-	            <div class="title">Because We Really Care About Your Pets</div>
-	            <h2>Welcome to PetMe</h2>
+	            <div class="title">Read Some Intersting Article About Pet's</div>
+	            <h2>Read Our Blog</h2>
 
 	            <div class="row mt-5">
 	            	<?php 
 
                         require 'lib/connection.php';
-                        $fetch_blog = "SELECT * FROM blog";
+                        $fetch_blog = "SELECT * FROM blog  ORDER BY RAND() DESC LIMIT 3";
                         $blogs = mysqli_query($conn,$fetch_blog) or die(mysqli_error($conn));
 
                         while ($row = mysqli_fetch_assoc($blogs)): ?>
@@ -30,9 +30,9 @@
                                             $date = strtotime($row['date']);
                                          ?>
                                         <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
-                                        <a href="#"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                        <a href="read.php?article=<?php echo seoUrl($row['title']) ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                                     </div>
-                                    <div class="lower-content">
+                                    <div class="lower-content" onclick="location.href='read.php?article=<?php echo seoUrl($row['title']) ?>'">
                                         <ul class="news-info">
                                             <li>Article By <?php echo $row['writer'] ?></li>
                                             <li><?php echo $row['commentCount'] ?> Comment</li>

@@ -27,6 +27,7 @@
 	<?php ob_start(); ?>
 	<?php require_once 'partials/nav/nav.php'; ?>
 	<?php getContent(); ?>
+	<?php require 'partials/modal/login-modal.php'; ?>
 </body>
 <script type="text/javascript" src="assets/js/script.js"></script>
 </html>

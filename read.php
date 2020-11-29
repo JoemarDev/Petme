@@ -79,6 +79,7 @@
                     </div>
                 </div>
 
+                <!-- COMMENTS -->
                 <div class="comments-area">
                     <div class="group-title mb-5">
                         <h2>Comments</h2>
@@ -109,6 +110,20 @@
                                 </div>
                             </div>
                         </div>
+                </div>
+                <!-- COMMENT -->
+                <div class="comment-form">
+                    <div class="group-title">
+                        <h2>Leave Reply</h2>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <textarea name="message" placeholder="Comments" id="blog-comment"></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                            <button class="theme-btn btn-style-four" id="submit-blog-comment">leave a comment</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-12">
