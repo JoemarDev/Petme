@@ -1,6 +1,6 @@
 <?php 
 	
-	require_once 'http://' . $_SERVER['HTTP_HOST'] . '/vendor/autoload.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 	$google_client = new Google_Client();
 
