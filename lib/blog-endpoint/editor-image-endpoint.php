@@ -3,7 +3,7 @@
 	session_start();
 	if (isset($_SESSION['access_token'])) :
 		
-		require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+		require '../../vendor/autoload.php';
 		require "cloud-config.php";
 
 		if ($_FILES['file']['name']) {

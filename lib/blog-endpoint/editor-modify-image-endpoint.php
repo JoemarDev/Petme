@@ -8,7 +8,7 @@
 		if (isset($_POST['postID'])):
 
 			if ($_POST['postID'] != null) {
-				require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+				require '../../vendor/autoload.php';
 				require "cloud-config.php";
 
 				// Get the image URL

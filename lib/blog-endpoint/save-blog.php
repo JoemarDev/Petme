@@ -4,7 +4,7 @@
 	// Check if the client data is have website token
 	if (isset($_SESSION['access_token'])):
 	
-		require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+		require '../../vendor/autoload.php';
 		require "cloud-config.php";
 		require '../connection.php';
 
