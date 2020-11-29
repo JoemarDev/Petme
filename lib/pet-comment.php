@@ -8,7 +8,7 @@
 	$created = date("Y-m-d H:i:s");
 	$userID = $_SESSION['OAuthID'];
 
-	$sql = "INSERT INTO petComments
+	$sql = "INSERT INTO petcomments
 		(
 			userid,
 			comment,

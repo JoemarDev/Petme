@@ -3,7 +3,7 @@
 	$petID = $_POST['petID'];
 	require 'connection.php';
 	$commentArr = [];
-	$comments = "SELECT * FROM petComments WHERE petid = '$petID'";
+	$comments = "SELECT * FROM petcomments WHERE petid = '$petID'";
 	$result = mysqli_query($conn,$comments) or die(mysqli_error($conn));
 
 	while ($row = mysqli_fetch_assoc($result)):

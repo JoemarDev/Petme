@@ -8,7 +8,7 @@
 		// PET ID GET FROM THE API
 		$petID = $_POST['petID'];
 		// Check if the pet info is already been saved
-		$checkPetID = "SELECT * FROM likedPet WHERE petID = '$petID'";
+		$checkPetID = "SELECT * FROM likedpet WHERE petID = '$petID'";
 		$result = mysqli_query($conn,$checkPetID) or die(mysqli_error($conn));
 		$resCount = mysqli_num_rows($result);
 
@@ -28,7 +28,7 @@
 
 			$lovedCount = 1;
 
-			$savedPet = "INSERT INTO likedPet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
+			$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
 
 			mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 
