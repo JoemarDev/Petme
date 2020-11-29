@@ -17,7 +17,7 @@
 			if (mysqli_num_rows($match) == 0) {
 
 				// Check if the pet info is already been saved
-				$checkPetID = "SELECT * FROM likedPet WHERE petID = '$petID'";
+				$checkPetID = "SELECT * FROM likedpet WHERE petID = '$petID'";
 				$result = mysqli_query($conn,$checkPetID) or die(mysqli_error($conn));
 				$resCount = mysqli_num_rows($result);
 
@@ -33,7 +33,7 @@
 					// Increment It by one from the user click
 					$lovedCount++;
 
-					$lovedAdd = "UPDATE likedPet SET petLiked = '$lovedCount' WHERE petID = '$petID'";
+					$lovedAdd = "UPDATE likedpet SET petLiked = '$lovedCount' WHERE petID = '$petID'";
 					mysqli_query($conn,$lovedAdd) or die(mysqli_error($conn));
 
 					// Save User and pet in like table
@@ -54,7 +54,7 @@
 
 					$lovedCount = 1;
 
-					$savedPet = "INSERT INTO likedPet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
+					$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
 
 					mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 

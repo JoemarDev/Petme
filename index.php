@@ -59,7 +59,7 @@
 		 
 			 <?php 
 			 	require 'lib/connection.php';
-			 	$sql = "SELECT * FROM userlikedpet ORDER BY RAND() LIMIT 12";
+			 	$sql = "SELECT * FROM likedpet ORDER BY RAND() LIMIT 12";
 			 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 			 	while ($row = mysqli_fetch_assoc($result)):
@@ -93,7 +93,7 @@
 			 		                                         require 'lib/connection.php';
 			 		                                         $petID = $pet_unserialized->animal->id;
 			 		                                         $userID = $_SESSION['OAuthID'];
-			 		                                         $checkIfLiked = "SELECT * FROM userLikedPet WHERE petID = '$petID' AND userID = '$userID'";
+			 		                                         $checkIfLiked = "SELECT * FROM userlikedpet WHERE petID = '$petID' AND userID = '$userID'";
 			 		                                         $results = mysqli_query($conn,$checkIfLiked);
 			 		                                         if (mysqli_num_rows($results) > 0): ?>
 			 		                                             <a type="button" class="active unloved-pet" data-pet-id="<?php echo $pet_unserialized->animal->id ?>">

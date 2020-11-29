@@ -162,7 +162,7 @@
                 <div class="row w-100 m-0 mt-2">
                     <?php 
 
-                        $listPet = "SELECT * FROM likedPet ORDER BY RAND() LIMIT 6";
+                        $listPet = "SELECT * FROM likedpet ORDER BY RAND() LIMIT 6";
                         $list = mysqli_query($conn,$listPet) or die(mysqli_error($conn));
 
                         while ($pet_object = mysqli_fetch_assoc($list)): ?>

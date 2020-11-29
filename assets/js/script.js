@@ -176,3 +176,5 @@ $('.unloved-pet').click(function(){
         }
     })
 })
+
+$('.fr-element').prev().remove();

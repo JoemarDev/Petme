@@ -1,12 +1,12 @@
 <?php require_once 'template.php'; ?>
 
 <?php function getTitle(){
-	echo "PET | Adopt A Pet";
+    echo "PET | Adopt A Pet";
 } ?>
 
 <?php function getContent() { ?>
 
-	<section class="page-title" style="background-image:url(assets/images/background/7.jpg)">
+    <section class="page-title" style="background-image:url(assets/images/background/7.jpg)">
         <div class="container">
             <div class="clearfix">
                 <div class="float-left">
@@ -167,7 +167,7 @@
                                                                     require 'lib/connection.php';
                                                                     $petID = $key->id;
                                                                     $userID = $_SESSION['OAuthID'];
-                                                                    $checkIfLiked = "SELECT * FROM userLikedPet WHERE petID = '$petID' AND userID = '$userID'";
+                                                                    $checkIfLiked = "SELECT * FROM userlikedpet WHERE petID = '$petID' AND userID = '$userID'";
                                                                     $results = mysqli_query($conn,$checkIfLiked);
                                                                     if (mysqli_num_rows($results) > 0): ?>
                                                                         <a type="button" class="active unloved-pet" data-pet-id="<?php echo $key->id ?>">
@@ -297,7 +297,7 @@
 
 
     
-	<?php require_once 'partials/footer/footer.php' ?>
+    <?php require_once 'partials/footer/footer.php' ?>
 <?php } ?>
 
 
