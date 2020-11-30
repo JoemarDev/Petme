@@ -21,47 +21,15 @@ Gmail ✅ ,Facebook ❌
 # Technology
 PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
-# GOAL⚠️
+# Next Update PET ME Version (0.01)
 
 
-✅ Home Page
+1. Re-Design the pet card
 
+2. Put a activity history in profile page
 
-✅ About Page
+3. Make SEO friendly All Page.
 
-
-✅ Pets Page
-
-
-✅  Blog page
-
-
-✅ Contact
-
-
-✅ Login Page
-
-
-✅ Register Page
-
-
-
-☑️ 1.Comment in Viewing Animal Page.
-
-
-☑️ 2.Login using social account (Facebook , Gmail).
-
-
-❌ 4.Update and Delete comment.
-
-
-☑️  5.Can like pet in Pet Page And Save it in the database as Serialize Object.
-
-
-☑️  6.Create a profile page show what pet did you like Fetch from the Database.
-
-
-❌ 7.Connecting Paypal To the Donation Button.
 
 # Pet List Page
 ![alt text](https://media-exp1.licdn.com/dms/image/C5622AQGqjrxr6frgwQ/feedshare-shrink_1280-alternative/0/1606298562900?e=1609372800&v=beta&t=yBtaeIfCD462L6iCDNxPoSW2Yr-1mD4On3W8hlW2H1M)
