@@ -8,7 +8,7 @@
 
 	$google_client->setClientSecret("Y6oExkcn4S-016-_B0v6u2mW");
 
-	$google_client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] .'/lib/google-login-api/setGoogleLogin.php');
+	$google_client->setRedirectUri('http://'. $_SERVER['HTTP_HOST'] .'/petme/lib/google-login-api/setGoogleLogin.php');
 
 	$google_client->addScope('email');
 
@@ -95,6 +95,7 @@
 				GenerateSession($dataID,$fistname,$lastname,$email,$gender,$picture);
 			}
 
+
 			header('location: ../../index.php');
 		}
 	}
@@ -107,5 +108,7 @@
 		$_SESSION['user_email_address'] = $email;
 		$_SESSION['user_gender'] = $gender;
 		$_SESSION['user_picture'] = $picture;
+
+
 	}
  ?>

@@ -1,3 +1,4 @@
+</script>
 <?php require_once 'template.php'; ?>
 
 <?php function getTitle(){
@@ -83,3 +84,4 @@
 <script type="text/javascript">
     $('.header-menu').find('li').eq(2).addClass('active')
 </script>
+

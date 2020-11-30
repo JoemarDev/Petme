@@ -63,12 +63,7 @@
 			 	$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 			 	while ($row = mysqli_fetch_assoc($result)):
-			 		$petID = $row['petID'];
-			 		$petInfo = "SELECT * FROM likedpet WHERE petID = '$petID'";
-			 		$info = mysqli_query($conn,$petInfo) or die(mysqli_error($conn));
-
-			 		$pet = mysqli_fetch_assoc($info);
-			 		$pet_unserialized = unserialize($pet['petObject']);
+			 		$pet_unserialized = unserialize($row['petObject']);
 
 			 		 ?>
 			 		 <!--Pets Block-->

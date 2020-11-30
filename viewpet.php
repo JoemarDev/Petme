@@ -400,6 +400,6 @@
 
 
 <script type="text/javascript">
-    loadComment($('#comment-input').attr('data-animal-id'))
-    $('.header-menu').find('li').eq(2).addClass('active')
+    loadPetComment($('#comment-input').attr('data-animal-id'))
+    $('.header-menu').find('li').eq(1).addClass('active')
 </script>

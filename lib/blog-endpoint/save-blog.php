@@ -13,10 +13,11 @@
 		$blog_image_title = $_FILES['blog-image']['name'];
 		$blog_description = mysqli_real_escape_string($conn,$_POST['blog-description']);
 		$blog_content = mysqli_real_escape_string($conn,$_POST['blog-content']);
-		$blog_writer = $_SESSION['user_first_name'];
+		$blog_writer = $_SESSION['user_first_name']. ' '.$_SESSION['user_last_name'][0].'.';
 		$blog_created = date("Y-m-d H:i:s");
 		$blog_link_1 = $_POST['blog-link-1'];
 		$blog_link_2 = $_POST['blog-link-2'];
+		$blog_writer_id = $_SESSION['OAuthID'];
 		$blog_seo_title = seoUrl($_POST['blog-title']);
 
 		$linkArr = serialize([$blog_link_1,$blog_link_2]);
@@ -48,18 +49,14 @@
 				$blog_image_url = $response['url'];
 			}
 
-			header('location: ../../blog.php');
-
+		
 		endif;
 
-		
-
-		echo $blog_image_url;
-
-		$sql = "INSERT INTO blog(title,content,writer,date,likeCount,commentCount,image,link,isAllowed,seoTitle,description)
-			VALUES('$blog_title','$blog_content','$blog_writer','$blog_created',0,0,'$blog_image_url','$linkArr',0,'$blog_seo_title','$blog_description')";
+		$sql = "INSERT INTO blog(title,content,writer,date,likeCount,commentCount,image,link,isAllowed,seoTitle,description,writer_id)
+			VALUES('$blog_title','$blog_content','$blog_writer','$blog_created',0,0,'$blog_image_url','$linkArr',0,'$blog_seo_title','$blog_description','$blog_writer_id')";
 
 		mysqli_query($conn,$sql) or die(mysqli_error($conn));	
+		header('location: ../../blog.php');
 		
 	else:		
 		header("HTTP/1.1 401 Unauthorized");

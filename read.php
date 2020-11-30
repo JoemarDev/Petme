@@ -28,29 +28,37 @@
     <div class="container">
         
         <div class="row mt-5">
-           
+           <?php 
+               require 'lib/connection.php';
+               $title = $_GET['article'];
+               $sql = "SELECT * FROM blog WHERE seoTitle = '$title'";
+               $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+               $result = mysqli_fetch_assoc($result);
+            ?>
+            <?php if (isset($result)): ?>
+              
             <div class="col-xl-9 col-md-12 blog-read">
-                <?php 
-                    require 'lib/connection.php';
-                    $title = $_GET['article'];
-                    $sql = "SELECT * FROM blog WHERE seoTitle = '$title'";
-                    $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-                    $result = mysqli_fetch_assoc($result);
-                 ?>
+                
 
-                 <img src="<?php echo $result['image'] ?>" class="w-100" style ="max-height: 400px; object-fit: cover;">
+                 <?php if ($result['image'] != null): ?>
+                     <img src="<?php echo $result['image'] ?>" class="w-100 mb-5" style ="max-height: 400px; object-fit: cover;">
+                 <?php endif ?>
+                
                  <div class="title-box">
                     <?php if (isset($_SESSION['access_token'])): ?>
-                        
-                        <div class="float-right" >
-                            <div class="dropdown" style="z-index: 50;">
-                              <button style="background: none; border:none;" class="btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="modify.php?id=<?php echo $result['id']; ?>"><strong> Modify </strong> </a>
-                                <a class="dropdown-item" href="#"><strong> Remove </strong></a>
-                              </div>
+                       
+                        <?php if ($_SESSION['OAuthID'] == $result['writer_id']): ?>
+     
+                            <div class="float-right" >
+                                <div class="dropdown" style="z-index: 50;">
+                                  <button style="background: none; border:none;" class="btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="modify.php?id=<?php echo $result['id']; ?>"><strong> Modify </strong> </a>
+                                    <a class="dropdown-item" href="lib/blog-endpoint/destroy-blog.php?articleID=<?php echo $result['id']; ?>"><strong> Remove </strong></a>
+                                  </div>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif ?>
                     <?php endif ?>
                     <?php 
                         $date = strtotime($result['date']);
@@ -67,6 +75,9 @@
                     <?php echo $result['content']; ?>
                 </div>
                 <div class="post-share-options clearfix">
+                    <div class="float-left">
+                        <h2 style="position: relative; top: -5px;">Comments</h2>
+                    </div>
                     <div class="float-right social-icon-four clearfix">
                         <span class="share">Share</span>
                         <?php 
@@ -81,13 +92,13 @@
 
                 <!-- COMMENTS -->
                 <div class="comments-area">
-                    <div class="group-title mb-5">
-                        <h2>Comments</h2>
-                    </div>
+
                     <!--Comment Box-->
-                    <div class="comment-box">
-                        <div class="comment">
-                            <div class="author-thumb"><img src="<?php echo $_SESSION['user_picture'] ?>" alt=""></div>
+                    <div class="comment-list py-2">
+                       <small class="ml-3">No comment here yet.</small>
+                       <!--  <div class="comment-box">
+                            <div class="comment">
+                                <div class="author-thumb"><img src="#" alt=""></div>
                                 <div class="comment-inner">
                                     <div class="comment-info clearfix"><strong>Cindy Cambell</strong>
                                         <div class="comment-time">march 31, 2019</div>
@@ -96,40 +107,34 @@
                                     <a class="comment-reply" href="#">Reply</a>
                                 </div>
                             </div>
-                        </div>
-                        <!--Comment Box-->
-                        <div class="comment-box reply-comment">
-                            <div class="comment">
-                                <div class="author-thumb"><img src="<?php echo $_SESSION['user_picture'] ?>" alt=""></div>
-                                <div class="comment-inner">
-                                    <div class="comment-info clearfix"><strong>Sandy Astral</strong>
-                                        <div class="comment-time">march 31, 2019</div>
-                                    </div>
-                                    <div class="text">Well gaudy hound hired inset flailed luxuriant much followed orio less this maternal oh well unavoidable crudely aloof in more save groomed.</div>
-                                    <a class="comment-reply" href="#">Reply</a>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
+                    </div>
                 </div>
                 <!-- COMMENT -->
-                <div class="comment-form">
-                    <div class="group-title">
-                        <h2>Leave Reply</h2>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                            <textarea name="message" placeholder="Comments" id="blog-comment"></textarea>
+                <?php if (isset($_SESSION['OAuthID'])): ?>
+                    <div class="comment-form">
+                        <div class="group-title">
+                            <h2>Leave Reply</h2>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                            <button class="theme-btn btn-style-four" id="submit-blog-comment">leave a comment</button>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <textarea name="message" placeholder="Comments" id="blog-comment"></textarea>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <button class="theme-btn btn-style-four" id="submit-blog-comment" value="<?php echo $result['id']; ?>">leave a comment</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php else: ?>
+                    <button class="theme-btn btn-style-five py-2" data-toggle="modal" data-target="#petLoginModal">Leave a comment</button>
+                   
+                <?php endif ?>
+               
             </div>
             <div class="col-xl-3 col-md-12">
                 
                 <div class="card p-2 text-white" style="background:#e7470c;">
-                    <label class="m-0"><strong>Related Post</strong></label>
+                    <label class="m-0"><strong>Other Articles</strong></label>
                 </div>
                 <div class="row w-100 m-0 mt-2 popular-posts">
                     <?php 
@@ -143,7 +148,12 @@
                                <article class="post">
                                     <figure class="post-thumb">
                                         <a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>">
-                                            <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
+                                            <?php if (isset($blog_object['image'])): ?>
+                                                <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
+                                            <?php else: ?>
+                                                <img src="assets/images/background/blog-place-holder.jpg" alt="Image for <?php echo $blog_object['title'] ?>">
+                                            <?php endif ?>
+                                            
                                         </a>
                                     </figure>
                                     <div class="text"><a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
@@ -177,7 +187,6 @@
                                     <?php else: ?>
                                         <img class="w-100" src="assets/images/icon/dog-placeholder.gif" alt="Card image cap" style="height: 120px; object-fit: contain;">
                                     <?php endif ?>
-
                                 </a>
                             </div>
                             
@@ -188,6 +197,14 @@
             </div> 
 
         </div>
+            <?php else: ?>
+               
+               <div class="w-100 py-5 text-center">
+                    <img src="assets/images/icon/dog.svg" alt="" class="img-fluid" style="object-fit: contain;">
+                    <h2>Sorry we can't find what you looking for :(</h2>
+               </div>
+        <?php endif ?>
+
 
        
 
@@ -198,7 +215,7 @@
 
 <?php } ?>
 
-
 <script type="text/javascript">
-    $('.header-menu').find('li').eq(3).addClass('active');
+    loadBlogComment($('#submit-blog-comment').val())
+    $('.header-menu').find('li').eq(2).addClass('active');
 </script>

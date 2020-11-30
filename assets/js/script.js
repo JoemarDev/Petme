@@ -82,11 +82,11 @@ $('#comment-input').focus(function(){
                         method : 'post',
                         data : {'comment' : comment , 'petID' : petId},
                         success:function(data){
-                            loadComment(petId);
+                            loadPetComment(petId);
                             $('#comment-input').val('');
                             setTimeout(function(){
                                 allowedComment = true;
-                            },5000);
+                            },10000);
                         }
                     })
                 }
@@ -95,7 +95,7 @@ $('#comment-input').focus(function(){
     });
 });
 
-function loadComment(petID) {
+function loadPetComment(petID) {
     $.ajax({
         'url' : 'lib/load-pet-comment.php',
         'method' : 'POST',
@@ -177,4 +177,57 @@ $('.unloved-pet').click(function(){
     })
 })
 
-$('.fr-element').prev().remove();
+$('#submit-blog-comment').click(function(){
+    let commentID = $(this).val();
+    let comment = $('#blog-comment').val();
+    if (allowedComment) {    
+        allowedComment = false;
+        $.ajax({
+            'url' : 'lib/blog-endpoint/save-blog-comment.php',
+            'method' : 'post',
+            'data' : {'commentID' : commentID , 'comment' : comment},
+            success:function(data){
+                loadBlogComment(commentID);
+                setTimeout(function(){
+                    allowedComment = true;
+                },10000);
+            }
+        })
+
+    }
+
+});
+
+
+function loadBlogComment(blogID) {
+    $.ajax({
+        'url' : 'lib/blog-endpoint/load-blog-comment.php',
+        'method' : 'POST',
+        'data' : {'blogID' : blogID},
+        success:function(data){
+            let comments = JSON.parse(data);
+            let commCounts = comments.length;
+            if (commCounts > 0) {        
+                $('.comment-list').html('');
+                for(let x = 0; x < commCounts; x++) {
+
+                    $('.comment-list').append(
+                        '<div class="comment-box py-2">'+
+                            '<div class="comment">'+
+                                '<div class="author-thumb"><img src="'+comments[x]['picture']+'" alt=""></div>'+
+                                    '<div class="comment-inner">'+
+                                        '<div class="comment-info clearfix"><strong>'+comments[x]['name']+'</strong>'+
+                                            '<div class="comment-time">'+comments[x]['time']+'</div>'+
+                                        '</div>'+
+                                        '<div class="text">'+escapeHtml(comments[x]['comment'])+'</div>'+
+                                        '<a class="comment-reply" href="#">Reply</a>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>');
+            
+                }
+            }
+            $('#blog-comment').val('')
+        }
+    })
+}

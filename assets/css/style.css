@@ -4,7 +4,7 @@
    font-family: 'Noto Sans KR', sans-serif;
 }
 .container {
-	max-width: 1200px;
+	max-width: 1300px;
 }
 
 .header-menu .active {
@@ -1726,7 +1726,6 @@ ul.petdetails li:before {
     position: relative;
     padding-left: 95px;
     margin-bottom: 32px;
-    margin-top: 32px;
 }
 
 .blog-read .date-box {
