@@ -33,14 +33,14 @@
 		 		</div>
 		 		<div class="float-right">
 		 			<ul class="header-menu">
-		 				<li onclick="window.location.href='index.php'">HOME</li>
-		 				<li onclick="window.location.href='pet.php'">PETS</li>
-		 				<li onclick="window.location.href='blog.php'">BLOG</li>
+		 				<li onclick="window.location.href='index.php'"><a href="index.php">HOME</a></li>
+		 				<li onclick="window.location.href='pet.php'"><a href="pet.php">PETS</a></li>
+		 				<li onclick="window.location.href='blog.php'"><a href="blog.php">BLOG</a></li>
 		 				<?php if (isset($_SESSION['access_token'])): ?>
-		 					<li onclick="window.location.href='profile.php'">ACCOUNT</li>
-		 					<li onclick="window.location.href='lib/logout.php'"><i class="icofont-sign-out"></i></li>
+		 					<li onclick="window.location.href='profile.php'"><a href="profile.php">ACCOUNT</a></li>
+		 					<li onclick="window.location.href='lib/logout.php'"><a href="lib/logout.php"><i class="icofont-sign-out"></i></a></li>
 	 					<?php else: ?>
-	 						<li onclick="window.location.href='login.php'">LOGIN</li>
+	 						<li onclick="window.location.href='login.php'"><a href="login.php">LOGIN</a></li>
 		 				<?php endif ?>
 		 			</ul>
 		 		</div>
@@ -84,18 +84,26 @@
 			<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='index.php'">
 				<strong>HOME</strong>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='about.php'">
-				<strong>ABOUT</strong>
-			</div>
 			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='pet.php'" >
 				<strong>PETS</strong>
 			</div>
 			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='blog.php'">
 				<strong>BLOG</strong>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='contact.php'">
-				<strong>CONTACT</strong>
-			</div>
+
+			<?php if (isset($_SESSION['access_token'])): ?>
+				<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='profile.php'">
+					<strong>ACCOUNT</strong>
+				</div>
+				<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='lib/logout.php'">
+					<strong>LGGOUT</strong>
+				</div>
+			<?php else: ?>
+				<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='login.php'">
+					<strong>LOGIN</strong>
+				</div>
+			<?php endif ?>
+
 			<div class="w-100 py-3 pl-4 nav-mobile-menu-close" style="cursor: pointer;" onclick="toggleSidebar()">
 				<strong>CLOSE</strong>
 			</div>

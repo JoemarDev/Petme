@@ -4,6 +4,33 @@
 	echo "PETME | HOME";
 } ?>
 
+
+<?php function getMeta() { ?>
+	<meta name="title" content="PET ME | HOME">
+	<meta name="description" content="We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.">
+	<meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+	<meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+	<meta name="author" content="PETME">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://metatags.io/">
+	<meta property="og:title" content="Petme">
+	<meta property="og:description" content="We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.">
+	<meta property="og:image" content="assets/images/logo/petlogo.png">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://metatags.io/">
+	<meta property="twitter:title" content="Petme">
+	<meta property="twitter:description" content="We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.">
+	<meta property="twitter:image" content="assets/images/logo/petlogo.png">
+
+
+<?php } ?>
+
 <?php function getContent() { ?>
 
 	<!-- HOME BANNER -->

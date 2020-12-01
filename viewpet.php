@@ -4,6 +4,36 @@
 	echo "PETME | Pet Information";
 } ?>
 
+<?php function getMeta() { ?>
+
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="PETME">
+    <?php $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $fullLink; ?>">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+   
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?php echo $fullLink; ?>">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+
+
+<?php } ?>
+
+
+
 <?php function getContent() { ?>
 
     <?php 
@@ -139,6 +169,46 @@
 
     <?php if (isset($pet->animal)): ?>
 
+
+        <!-- SEO -->
+            <?php if ($pet->animal->description == null): ?>
+                <script type="text/javascript">
+                    document.querySelector('meta[name="description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
+                    document.querySelector('meta[property="og:description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
+                    document.querySelector('meta[property="twitter:description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
+                </script>
+            <?php else: ?>
+                <p class="m-0" style="font-size: 14px;"><?php echo $pet->animal->description ?></p>
+                <script type="text/javascript">
+                    document.querySelector('meta[name="description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
+                    document.querySelector('meta[property="og:description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
+                    document.querySelector('meta[property="twitter:description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
+                </script>
+            <?php endif ?>
+
+            <?php 
+                $photo = $pet->animal->photos;
+                $photoLen = count($photo);
+
+                if ($photoLen > 0): ?>
+                    <script type="text/javascript">
+                        document.querySelector('meta[property="og:image"]').setAttribute("content", '<?php echo $photo[0]->full ?>');
+                        document.querySelector('meta[property="twitter:image"]').setAttribute("content", '<?php echo $photo[0]->full ?>');
+                    </script>
+                <?php else: ?>
+                    <script type="text/javascript">
+                        document.querySelector('meta[property="og:image"]').setAttribute("content", 'assets/images/background/blog-place-holder.jpg');
+                        document.querySelector('meta[property="twitter:image"]').setAttribute("content", 'assets/images/background/blog-place-holder.jpg');
+                    </script>
+                <?php endif;?>
+
+            <script type="text/javascript">
+                document.querySelector('meta[name="title"]').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
+                document.querySelector('meta[name="keywords"]').setAttribute("content", 'S-Neutered,House Trained,Declawed,Special Needs,Shots Current,Age,Gender,Size ');
+                document.querySelector('meta[property="og:title"]').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
+                document.querySelector('meta[property="twitter:title').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
+            </script>
+        <!-- SEO -->
         <section class="pet-image">
             <div class="container mt-5">
                 <div class="row">
@@ -397,6 +467,7 @@
     <?php endif ?>
     
 <?php } ?>
+
 
 
 <script type="text/javascript">

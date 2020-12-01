@@ -4,6 +4,33 @@
     echo "PET | Adopt A Pet";
 } ?>
 
+<?php function getMeta() { ?>
+    <meta name="title" content="PETME | PETS">
+    <meta name="description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+    <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="PETME">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="//petme.cf">
+    <meta property="og:title" content="PETME | PETS">
+    <meta property="og:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+    <meta property="og:image" content="assets/images/petlist.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="//petme.cf">
+    <meta property="twitter:title" content="PETME | PETS">
+    <meta property="twitter:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+    <meta property="twitter:image" content="assets/images/petlist.jpeg">
+
+<?php } ?>
+
+
+
 <?php function getContent() { ?>
 
     <section class="page-title" style="background-image:url(assets/images/background/7.jpg)">

@@ -1,10 +1,22 @@
-
-
 <?php require_once 'template.php'; ?>
 
 <?php function getTitle(){
 	echo "PETME | HOME";
 } ?>
+
+
+<?php function getMeta() { ?>
+	<meta name="title" content="PET ME">
+	<meta name="description" content="We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.">
+	<meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+	<meta name="robots" content="noindex, nofollow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+	<meta name="author" content="PETME">
+
+
+
+<?php } ?>
 
 <?php function getContent() { ?>
 
@@ -61,7 +73,7 @@
 	<div class="container blog-write mt-4">
 		<div class="card p-3">
 			<form action="lib/blog-endpoint/save-blog.php" method="post"  enctype="multipart/form-data">
-				<table class="blog-write-table">
+				<table class="blog-write-table w-100">
 					<tr>
 						<td class="w-15 px-3 py-2 text-left"><h2><strong>Blog Post</strong></h2></td>
 						<td class="w-85 px-3 py-2"></td>

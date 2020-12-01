@@ -19,9 +19,16 @@
 		$blog_link_2 = $_POST['blog-link-2'];
 		$blog_writer_id = $_SESSION['OAuthID'];
 		$blog_seo_title = seoUrl($_POST['blog-title']);
-
 		$linkArr = serialize([$blog_link_1,$blog_link_2]);
 
+		// CHECK IF SEO TITLE EXIST
+
+		$checkTitle = "SELECT * FROM blog WHERE title = '$blog_title'";
+		$matchCount = mysqli_num_rows(mysqli_query($conn,$checkTitle));
+		if ($matchCount > 0) {
+			$blog_seo_title .= '-'.$matchCount;
+		}
+		
 
 		// default main image address
 		$blog_image_url = null;

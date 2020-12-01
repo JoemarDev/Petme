@@ -4,6 +4,53 @@
     echo "Blogs | PET ME";
 } ?>
 
+<?php function getMeta() { ?>
+
+    <?php 
+        require 'lib/connection.php';
+        $title = $_GET['article'];
+        $meta = "SELECT * FROM blog WHERE seoTitle = '$title'";
+        $metaRes = mysqli_query($conn,$meta) or die(mysqli_error($conn));
+        $metaRes = mysqli_fetch_assoc($metaRes);
+
+        $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+     ?>
+
+    <meta name="title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <meta name="description" content="<?php echo $metaRes['description']; ?>">
+    <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="PETME">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $fullLink; ?>">
+    <meta property="og:title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <meta property="og:description" content="<?php echo $metaRes['description']; ?>">
+    <?php if ($result['image'] != null): ?>
+        <meta property="og:image" content="<?php echo $result['image'] ?>">
+    <?php else: ?>
+        <meta property="og:image" content="assets/images/background/blog-place-holder.png">
+    <?php endif ?>    
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?php echo $fullLink; ?>">
+    <meta property="twitter:title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <meta property="twitter:description" content="<?php echo $metaRes['description']; ?>">
+    <meta property="twitter:image" content="assets/images/logo/petlogo.png">
+    <?php if ($result['image'] != null): ?>
+        <meta property="twitter:image" content="<?php echo $result['image'] ?>">
+    <?php else: ?>
+        <meta property="twitter:image" content="assets/images/background/blog-place-holder.png">
+    <?php endif ?>
+
+
+<?php } ?>
+
+
 <?php function getContent() { ?>
     <?php 
         require 'vendor/autoload.php';
@@ -81,7 +128,7 @@
                     <div class="float-right social-icon-four clearfix">
                         <span class="share">Share</span>
                         <?php 
-                            $shareLink = "https://stackoverflow.com/questions/6127814/nth-child-with-mod-or-modulo-operator";
+                            $shareLink = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                          ?>
                         <a href="https://twitter.com/intent/tweet?url=<?php echo $shareLink ?>" target="#_share"><span class="icofont-twitter"></span></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $shareLink ?>" target="#_share"><span class="icofont-facebook"></span></a>
@@ -131,6 +178,7 @@
                 <?php endif ?>
                
             </div>
+
             <div class="col-xl-3 col-md-12">
                 
                 <div class="card p-2 text-white" style="background:#e7470c;">
@@ -144,11 +192,14 @@
 
                         while ($blog_object = mysqli_fetch_assoc($resList)): ?>
 
+                            <?php $blog_date = strtotime($blog_object['date']); ?>
+
+
                             <div class="col-12 p-1">
                                <article class="post">
                                     <figure class="post-thumb">
                                         <a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>">
-                                            <?php if (isset($blog_object['image'])): ?>
+                                            <?php if ($blog_object['image'] != null): ?>
                                                 <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
                                             <?php else: ?>
                                                 <img src="assets/images/background/blog-place-holder.jpg" alt="Image for <?php echo $blog_object['title'] ?>">
@@ -157,7 +208,7 @@
                                         </a>
                                     </figure>
                                     <div class="text"><a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
-                                    <div class="post-info"><?php echo date('M',$date) ?> <?php echo date('d',$date) ?>  <?php echo date('Y',$date) ?></div>
+                                    <div class="post-info"><?php echo date('M',$blog_date) ?> <?php echo date('d',$blog_date) ?>  <?php echo date('Y',$blog_date) ?></div>
                                   
                                 </article>
                             </div>

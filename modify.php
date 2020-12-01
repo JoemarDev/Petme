@@ -4,6 +4,20 @@
 	echo "PETME | HOME";
 } ?>
 
+<?php function getMeta() { ?>
+	<meta name="title" content="PET ME">
+	<meta name="description" content="We help all homeless and abused pets to find and take care of them, we promote all social and website for adoption, if you want to inlist your program just email us for that matter. you can put any animal here for adoptation so soon we can them a family.">
+	<meta name="keywords" content="Pet,Adoption,PetCare,findpet">
+	<meta name="robots" content="noindex, nofollow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+	<meta name="author" content="PETME">
+
+
+
+<?php } ?>
+
+
 <?php function getContent() { ?>
     
 
