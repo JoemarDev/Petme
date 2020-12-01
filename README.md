@@ -28,7 +28,7 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
 2. Put a activity history in profile page
 
-3. Make SEO friendly All Page.
+3. Make SEO friendly All Page.✅
 
 ![alt text](https://raw.githubusercontent.com/JoemarDev/Petme/master/assets/images/background/blog-place-holder.jpg)
 
