@@ -15,8 +15,10 @@
 
         $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
      ?>
-
-    <meta name="title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <script>
+        document.title = 'PETME | <?php echo $metaRes['title']; ?>';
+    </script>
+    <meta name="title" content="PETME | <?php echo $metaRes['title']; ?>">
     <meta name="description" content="<?php echo $metaRes['description']; ?>">
     <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
     <meta name="robots" content="index, follow">
@@ -27,24 +29,23 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $fullLink; ?>">
-    <meta property="og:title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <meta property="og:title" content="PETME | <?php echo $metaRes['title']; ?>">
     <meta property="og:description" content="<?php echo $metaRes['description']; ?>">
-    <?php if ($result['image'] != null): ?>
-        <meta property="og:image" content="<?php echo $result['image'] ?>">
+    <?php if ($metaRes['image'] != null): ?>
+        <meta property="og:image" content="<?php echo $metaRes['image'] ?>">
     <?php else: ?>
-        <meta property="og:image" content="assets/images/background/blog-place-holder.png">
+        <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/background/blog-place-holder.jpg">
     <?php endif ?>    
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?php echo $fullLink; ?>">
-    <meta property="twitter:title" content="Blog | <?php echo $metaRes['title']; ?>">
+    <meta property="twitter:title" content="PETME | <?php echo $metaRes['title']; ?>">
     <meta property="twitter:description" content="<?php echo $metaRes['description']; ?>">
-    <meta property="twitter:image" content="assets/images/logo/petlogo.png">
-    <?php if ($result['image'] != null): ?>
-        <meta property="twitter:image" content="<?php echo $result['image'] ?>">
+    <?php if ($metaRes['image'] != null): ?>
+        <meta property="twitter:image" content="<?php echo $metaRes['image'] ?>">
     <?php else: ?>
-        <meta property="twitter:image" content="assets/images/background/blog-place-holder.png">
+        <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/background/blog-place-holder.jpg">
     <?php endif ?>
 
 

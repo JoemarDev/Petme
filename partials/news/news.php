@@ -30,9 +30,9 @@
                                             $date = strtotime($row['date']);
                                          ?>
                                         <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
-                                        <a href="read.php?article=<?php echo seoUrl($row['title']) ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                        <a href="read.php?article=<?php echo $row['seoTitle']; ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                                     </div>
-                                    <div class="lower-content" onclick="location.href='read.php?article=<?php echo seoUrl($row['title']) ?>'">
+                                    <div class="lower-content" onclick="location.href='read.php?article=<?php echo $row['seoTitle']; ?>'">
                                         <ul class="news-info">
                                             <li>Article By <?php echo $row['writer'] ?></li>
                                             <li><?php echo $row['commentCount'] ?> Comment</li>
@@ -41,7 +41,7 @@
                                         <h3><a href="#"><?php echo $row['title'] ?></a></h3>
                     
                                         <small class="mb-4" style="display: block;"><?php echo $row['description']. '...'; ?> </small>
-                                        <a href="read.php?article=<?php echo seoUrl($row['title']) ?>" class="read-more">Read More</a>
+                                        <a href="read.php?article=<?php echo $row['seoTitle']; ?>" class="read-more">Read More</a>
                                     </div>
                                 </div>
                             </div>

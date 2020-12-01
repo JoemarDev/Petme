@@ -18,14 +18,14 @@
     <meta property="og:url" content="//petme.cf">
     <meta property="og:title" content="PETME | PETS">
     <meta property="og:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
-    <meta property="og:image" content="assets/images/petlist.jpeg">
+    <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="//petme.cf">
     <meta property="twitter:title" content="PETME | PETS">
     <meta property="twitter:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
-    <meta property="twitter:image" content="assets/images/petlist.jpeg">
+    <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
 
 <?php } ?>
 

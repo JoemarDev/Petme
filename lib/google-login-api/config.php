@@ -8,7 +8,7 @@
 
 	$google_client->setClientSecret("Y6oExkcn4S-016-_B0v6u2mW");
 
-	$google_client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] .'/petme/lib/google-login-api/setGoogleLogin.php');
+	$google_client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] .'/lib/google-login-api/setGoogleLogin.php');
 
 	$google_client->addScope('email');
 

@@ -6,28 +6,60 @@
 
 <?php function getMeta() { ?>
 
-    <meta name="title" content="">
-    <meta name="description" content="">
     <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta name="author" content="PETME">
     <?php $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="<?php echo $fullLink; ?>">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-   
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="<?php echo $fullLink; ?>">
-    <meta property="twitter:title" content="">
-    <meta property="twitter:description" content="">
-    <meta property="twitter:image" content="">
+    <?php if (isset($_GET['petID'])): ?>
+        <?php if (substr($_GET['petID'],0,5) == 'save-'): ?>
+            <?php 
+                require 'lib/connection.php';
+                $trimID = substr($_GET['petID'],5);
+
+                $sql = "SELECT * FROM likedpet WHERE petID = '$trimID'";
+                $metaRes = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                $metaRes = mysqli_fetch_assoc($metaRes);
+
+                $petMeta = unserialize($metaRes['petObject']);
+             ?>
+            <!-- Open Graph / Facebook -->
+
+            <meta name="title" content="PETME | Meet <?php echo $petMeta->animal->name ?>">
+            <meta name="description" content="<?php echo $petMeta->animal->description ?>">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="//petme.cf">
+            <meta property="og:title" content="PETME | Meet <?php echo $petMeta->animal->name ?>">
+            <meta property="og:description" content="<?php echo $petMeta->animal->description ?>">
+            <meta property="og:image" content="<?php echo $petMeta ->animal->photos[0]->full ?>">
+
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary_large_image">
+            <meta property="twitter:url" content="//petme.cf">
+            <meta property="twitter:title" content="PETME | Meet <?php echo $petMeta->animal->name; ?>">
+            <meta property="twitter:description" content="<?php echo $petMeta->animal->description; ?>">
+            <meta property="twitter:image" content="<?php echo $petMeta ->animal->photos[0]->full; ?>">
+        <?php else: ?> 
+            <meta name="title" content="PETME | PETS">
+            <meta name="description" content="<?php echo $petMeta->animal->description ?>">
+           <!-- Open Graph / Facebook -->
+             <meta property="og:type" content="website">
+             <meta property="og:url" content="//petme.cf">
+             <meta property="og:title" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+             <meta property="og:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+             <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
+
+             <!-- Twitter -->
+             <meta property="twitter:card" content="summary_large_image">
+             <meta property="twitter:url" content="//petme.cf">
+             <meta property="twitter:title" content="PETME | PETS">
+             <meta property="twitter:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
+             <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
+        <?php endif; ?>
+    <?php endif ?>
+  
 
 
 <?php } ?>
@@ -169,46 +201,6 @@
 
     <?php if (isset($pet->animal)): ?>
 
-
-        <!-- SEO -->
-            <?php if ($pet->animal->description == null): ?>
-                <script type="text/javascript">
-                    document.querySelector('meta[name="description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
-                    document.querySelector('meta[property="og:description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
-                    document.querySelector('meta[property="twitter:description"]').setAttribute("content", 'Our friend here is a pet of mystery.');
-                </script>
-            <?php else: ?>
-                <p class="m-0" style="font-size: 14px;"><?php echo $pet->animal->description ?></p>
-                <script type="text/javascript">
-                    document.querySelector('meta[name="description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
-                    document.querySelector('meta[property="og:description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
-                    document.querySelector('meta[property="twitter:description"]').setAttribute("content", '<?php echo $pet->animal->description ?>');
-                </script>
-            <?php endif ?>
-
-            <?php 
-                $photo = $pet->animal->photos;
-                $photoLen = count($photo);
-
-                if ($photoLen > 0): ?>
-                    <script type="text/javascript">
-                        document.querySelector('meta[property="og:image"]').setAttribute("content", '<?php echo $photo[0]->full ?>');
-                        document.querySelector('meta[property="twitter:image"]').setAttribute("content", '<?php echo $photo[0]->full ?>');
-                    </script>
-                <?php else: ?>
-                    <script type="text/javascript">
-                        document.querySelector('meta[property="og:image"]').setAttribute("content", 'assets/images/background/blog-place-holder.jpg');
-                        document.querySelector('meta[property="twitter:image"]').setAttribute("content", 'assets/images/background/blog-place-holder.jpg');
-                    </script>
-                <?php endif;?>
-
-            <script type="text/javascript">
-                document.querySelector('meta[name="title"]').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
-                document.querySelector('meta[name="keywords"]').setAttribute("content", 'S-Neutered,House Trained,Declawed,Special Needs,Shots Current,Age,Gender,Size ');
-                document.querySelector('meta[property="og:title"]').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
-                document.querySelector('meta[property="twitter:title').setAttribute("content", 'PETME | Meet <?php echo $pet->animal->name ?>');
-            </script>
-        <!-- SEO -->
         <section class="pet-image">
             <div class="container mt-5">
                 <div class="row">
@@ -363,9 +355,10 @@
                                     <div class="card-body">
                                         <div class="text-center my-2">
                                             
-                                            <label>Interested to meet <strong><?php echo $pet->animal->name ?></strong> ?</label>
-                                            <br>
-                                            <small style="font-size: 11px; top: -10px; position: relative; white-space: nowrap;">You can use contact information provided to contact <?php echo $pet->animal->name ?></small>
+                                            <label>Contact <br><strong><?php echo $pet->animal->name ?></strong> </label>
+                                           
+                                            
+                                           
                                         </div>
                                         <style type="text/css">
 

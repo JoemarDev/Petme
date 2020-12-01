@@ -19,14 +19,14 @@
     <meta property="og:url" content="//petme.cf">
     <meta property="og:title" content="Blogs | PET ME">
     <meta property="og:description" content="Read our daily article all about pets, How,What,When ? All about your pet is here.">
-    <meta property="og:image" content="assets/images/logo/petlogo.png">
+    <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/logo/petlogo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="//petme.cf">
     <meta property="twitter:title" content="Blogs | PET ME">
     <meta property="twitter:description" content="Read our daily article all about pets, How,What,When ? All about your pet is here.">
-    <meta property="twitter:image" content="assets/images/logo/petlogo.png">
+    <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/logo/petlogo.png">
 
 <?php } ?>
 
