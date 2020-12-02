@@ -211,7 +211,7 @@
                          ?>
 
                          <?php if ($photoLen > 0): ?>
-                             <div class="owl-carousel-view owl-carousel" style="display: block; border-bottom: 3px solid #e7470c; ">
+                             <div class="owl-carousel-view owl-carousel" style="display: block; border-bottom: 3px solid #e5a62d; ">
                                 
                                   <?php for ($i=0; $i < count($photo); $i++) : ?>
                                          <div class="item">
@@ -259,7 +259,7 @@
                             </div>
                          <?php endif ?>
 
-                         <hr style="background: #e7470c; height: 2px;">
+                         <hr style="background: #e5a62d; height: 2px;">
 
                         <?php require 'partials/comment/comment.php'; ?>
                     </div>

@@ -1,8 +1,8 @@
 <?php 
 	
 	$directory = [
-		'localhost' => $_SERVER['HTTP_HOST'].'/petme/',
-		'petme.cf' => $_SERVER['HTTP_HOST'].'',
+		'localhost' => 'http://'.$_SERVER['HTTP_HOST'].'/petme/',
+		'petme.cf' => 'https://'.$_SERVER['HTTP_HOST'].'/',
 
 	];
 
@@ -15,7 +15,7 @@
 
 	$google_client->setClientSecret("Y6oExkcn4S-016-_B0v6u2mW");
 
-	$google_client->setRedirectUri('http://' . $directory[$_SERVER['HTTP_HOST']] .'lib/google-login-api/setGoogleLogin.php');
+	$google_client->setRedirectUri($directory[$_SERVER['HTTP_HOST']] .'lib/google-login-api/setGoogleLogin.php');
 
 	$google_client->addScope('email');
 

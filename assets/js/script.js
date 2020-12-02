@@ -133,11 +133,11 @@ function escapeHtml(unsafe) {
 
 
 
-$('.loved-pet').click(function(){
+
+$(document).on('click' , '.love-pet', function(){
 
     let element = $(this);
     let petID = $(this).attr('data-pet-id');
-    $(this).hide();
     $.ajax({
         'url' : 'lib/pet-endpoint/pet-loved.php',
         'method' : 'POST',
@@ -146,20 +146,18 @@ $('.loved-pet').click(function(){
             if (data == '401') {
                location.reload();
             } else {
-               element.show();
-               element.addClass('active')
+               element.find('img').attr('src','assets/images/icon/heart-on.svg');
                element.addClass('unlove-pet')
-               element.removeClass('loved-pet')
+               element.removeClass('love-pet')
             }
         }
     })
 
 })
 
-$('.unloved-pet').click(function(){
+$(document).on('click' , '.unlove-pet', function(){
     let element = $(this);
     let petID = $(this).attr('data-pet-id');
-    $(this).hide();
     $.ajax({
         'url' : 'lib/pet-endpoint/pet-unloved.php',
         'method' : 'POST',
@@ -168,9 +166,8 @@ $('.unloved-pet').click(function(){
             if (data == '401') {
                location.reload();
             } else {
-               element.show();
+               element.find('img').attr('src','assets/images/icon/heart-off.svg');
                element.addClass('love-pet')
-               element.removeClass('active')
                element.removeClass('unlove-pet')
             }
         }
@@ -233,13 +230,21 @@ function loadBlogComment(blogID) {
 }
 
 
-function resizeProfileLikedPetImage(){
+function reisizeImage(){
     $('.liked-gallery img').each(function(){
         $(this).height($(this).width());
     })
+
+    $('.pet-card img').each(function(){
+        $(this).height($(this).width() + 50);
+    })
+
+
 }
 
-resizeProfileLikedPetImage();
+reisizeImage();
+
+
 $(window).resize(function(){
-    resizeProfileLikedPetImage();
+    reisizeImage();
 })

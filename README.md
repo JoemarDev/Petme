@@ -24,11 +24,11 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 # Next Update PET ME Version (0.01)
 
 
-1. Re-Design the pet card
+1. Re-Design the pet card ✅
 
 2. Put a activity history in profile page
 
-3. Make SEO friendly All Page.✅
+3. Make SEO friendly All Page. ✅
 
 ![alt text](https://raw.githubusercontent.com/JoemarDev/Petme/master/assets/images/background/blog-place-holder.jpg)
 

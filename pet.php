@@ -148,7 +148,7 @@
                }
              ?>
 
-            <div class="row clearfix">
+            <div class="row clearfix py-4">
                 <?php if ($animals != null): ?>
                     <?php 
 
@@ -161,73 +161,52 @@
                     <?php if ($length > 0) : ?>
                         <?php foreach ($animals->animals as $key): ?>
                             <!--Pets Block-->
-                            <div class="pet-block col-md-4 col-lg-3  col-12 col-xs-12">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <?php if ($key->primary_photo_cropped != null) : ?>
-                                            <img src="<?php echo $key->primary_photo_cropped->full ?>" alt="">
-                                        <?php else: ?>
-                                            <img src="assets/images/icon/dog-placeholder.gif" alt="" class="w-100" style="object-fit: contain;">
-                                        <?php endif; ?>
-                                        
-                                        <div class="overlay-box">
-                                            <div class="overlay-inner">
-                                                <div class="content">
-                                                    <ul>
-                                                        <?php 
-                                                            require 'lib/connection.php';
-                                                            $petID = $key->id;
-                                                            $checkIfSaved = "SELECT * FROM likedpet WHERE petID = '$petID'";
-                                                            $exist = mysqli_query($conn,$checkIfSaved) or die(mysqli_query($conn));
-
-                                                            $count = mysqli_num_rows($exist);
-                                                         ?>
-                                                        <?php if ($count > 0): ?>
-                                                            <li><a href="viewpet.php?petID=save-<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
-                                                        <?php else: ?>
-                                                            <li><a href="viewpet.php?petID=<?php echo $key->id ?>" target="#viewPet">view profile</a></li>
-                                                        <?php endif ?>
-                                                        
-                                                        <li class="share">
-                                                            <?php if (isset($_SESSION['access_token'])): ?>
-                                                                <?php 
-                                                                    require 'lib/connection.php';
-                                                                    $petID = $key->id;
-                                                                    $userID = $_SESSION['OAuthID'];
-                                                                    $checkIfLiked = "SELECT * FROM userlikedpet WHERE petID = '$petID' AND userID = '$userID'";
-                                                                    $results = mysqli_query($conn,$checkIfLiked);
-                                                                    if (mysqli_num_rows($results) > 0): ?>
-                                                                        <a type="button" class="active unloved-pet" data-pet-id="<?php echo $key->id ?>">
-                                                                            <span class="icofont-heart-alt"></span>
-                                                                        </a>
-                                                                <?php else: ?>
-
-                                                                    <a type="button" class="loved-pet" data-pet-id="<?php echo $key->id ?>">
-                                                                        <span class="icofont-heart-alt"></span>
-                                                                    </a>
-
-                                                                <?php endif;?>
-                                                              
-                                                            <?php else: ?>
-                                                                <a  data-toggle="modal" data-target="#petLoginModal">
-                                                                    <span class="icofont-heart-alt"></span>
-                                                                </a>
-                                                            <?php endif ?>
-                                                          
-                                                        </li>
-                                                    </ul>
+                            <div class="col-md-4 col-lg-3 col-sm-6 col-6 mb-3 pet-card-parent">
+                                <div class="pet-card w-100 shadow" >
+                                        <!-- CHECK IF THE USER LIKED THE PET -->
+                                        <?php if (isset($_SESSION['access_token'])): ?>
+                                            <?php 
+                                                require 'lib/connection.php';
+                                                $petID = $key->id;
+                                                $userID = $_SESSION['OAuthID'];
+                                                $checkIfLiked = "SELECT * FROM userlikedpet WHERE petID = '$petID' AND userID = '$userID'";
+                                                $results = mysqli_query($conn,$checkIfLiked);
+                                                if (mysqli_num_rows($results) > 0): ?>
+                                                   
+                                                <div class="unlove-pet love-pet-icon" data-pet-id="<?php echo $key->id ?>">
+                                                    <img src="assets/images/icon/heart-on.svg" >
                                                 </div>
+
+                                            <?php else: ?>
+
+                                                <div class="love-pet love-pet-icon" data-pet-id="<?php echo $key->id ?>">
+                                                    <img src="assets/images/icon/heart-off.svg" >
+                                                </div>
+
+                                            <?php endif;?>
+
+                                        <?php else: ?>
+                                            <div class="love-pet-icon" data-toggle="modal" data-target="#petLoginModal">
+                                                <img src="assets/images/icon/heart-off.svg" >
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="#"><?php echo $key->name; ?></a></h3>
+                                        <?php endif ?>
+                                    
+                                    <?php if (isset($key->primary_photo_cropped)) : ?>
+                                        <img src="<?php echo $key->primary_photo_cropped->small ?>" alt="">
+                                    <?php else: ?>
+                                        <img src="assets/images/icon/dog-placeholder.gif" alt="" class="w-100" style="object-fit: contain;">
+                                    <?php endif; ?>
+                                    <div class="overlay ">
+                                        <h3><?php echo ucfirst($key->name); ?></h3>
+                                        <br>
                                         <ul>
-                                            <li> <?php echo $key->age; ?></li>
-                                            <li> <?php echo $key->gender; ?></li>
-                                            <li> <?php echo $key->size; ?></li>
+                                            <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon"><?php echo $key->age; ?></li>
+                                            <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon"><?php echo $key->gender; ?> </li>
+                                            <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon"><?php echo $key->size; ?> </li>
                                         </ul>
-                                        <a href="#" class="theme-btn btn-style-eight">adopt me</a>
+                                        <a href="viewpet.php?petID=<?php echo $key->id ?>">
+                                            <button style="position: relative; top: 30px;" class="theme-btn btn-style-three">View Pet</button>
+                                        </a>    
                                     </div>
                                 </div>
                             </div> 
@@ -331,3 +310,26 @@
 <script type="text/javascript">
     $('.header-menu').find('li').eq(1).addClass('active')
 </script>
+<!-- 
+<div class="row py-3">
+    
+    
+    <div class="col-md-4 col-lg-3 col-sm-6 col-6">
+        <div class="pet-card w-100 shadow-sm" >
+            <div class="love-pet">
+                <img src="assets/images/icon/heart-off.svg" >
+            </div>
+            <img src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/49886147/1/?bust=1606284860">
+            <div class="overlay">
+                <h3>Puta </h3>
+                <br>
+                <ul>
+                    <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon">Baby</li>
+                    <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon">Female</li>
+                    <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon">Big</li>
+                </ul>
+                <button style="position: relative; top: 30px;" class="theme-btn btn-style-three">View Pet</button>
+            </div>
+        </div>
+    </div>
+</div> -->
