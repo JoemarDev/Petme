@@ -15,14 +15,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="//petme.cf">
+    <meta property="og:url" content="//<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>">
     <meta property="og:title" content="PETME | PETS">
     <meta property="og:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
     <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="//petme.cf">
+    <meta property="twitter:url" content="//<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>">
     <meta property="twitter:title" content="PETME | PETS">
     <meta property="twitter:description" content="We gather a lot of pet's who need a owner maybe your the parent of one of those pet.">
     <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/petlist.jpeg">
@@ -270,18 +270,18 @@
                     }
                  ?>
               <?php if ($jump > 0): ?>
-                  <a href="pet.php?page=<?php echo $start - 10; ?><?php echo $type; ?>">&laquo;</a>
+                  <a href="pets/<?php echo $start - 10; ?><?php echo $type; ?>">&laquo;</a>
               <?php endif ?>
               
                <?php for ($i = $start; $i <=  $limit; $i++) : ?>
                     <?php if ($page == $i): ?>
-                        <a class="active" href="pet.php?page=<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>
+                        <a class="active" href="pets/<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>
                     <?php else: ?>
-                        <a href="pet.php?page=<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>    
+                        <a href="pets/<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>    
                     <?php endif ?>
                <?php endfor; ?>
 
-              <a href="pet.php?page=<?php echo $limit + 1; ?><?php echo $type; ?>">&raquo;</a>
+              <a href="pets/<?php echo $limit + 1; ?><?php echo $type; ?>">&raquo;</a>
             </div>
         </div>
 
@@ -305,18 +305,18 @@
                     }
                  ?>
               <?php if ($jump > 0): ?>
-                  <a href="pet.php?page=<?php echo $start - 5; ?><?php echo $type; ?>">&laquo;</a>
+                  <a href="pets/<?php echo $start - 5; ?><?php echo $type; ?>">&laquo;</a>
               <?php endif ?>
               
                <?php for ($i = $start; $i <=  $limit; $i++) : ?>
                     <?php if ($page == $i): ?>
-                        <a class="active" href="pet.php?page=<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>
+                        <a class="active" href="pets/<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>
                     <?php else: ?>
-                        <a href="pet.php?page=<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>    
+                        <a href="pets/<?php echo $i ?><?php echo $type; ?>"><?php echo $i ?></a>    
                     <?php endif ?>
                <?php endfor; ?>
 
-              <a href="pet.php?page=<?php echo $limit + 1; ?><?php echo $type; ?>">&raquo;</a>
+              <a href="pets/<?php echo $limit + 1; ?><?php echo $type; ?>">&raquo;</a>
             </div>
         </div>
 

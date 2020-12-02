@@ -1720,6 +1720,35 @@ ul.petdetails li:before {
     transition: all 0.5s;
 }
 
+.profile-info p {
+    font-weight: 600;
+    position: relative;
+    line-height: 1.2;
+    padding-top: 20px;
+}
+
+.profile-info p img {
+    position: relative;
+    top: -10px;
+}
+
+.profile-info p small {
+    position: absolute; 
+    top: 5px;
+}
+
+.profile-info .liked-gallery img {
+    border-radius: 50px;
+}
+
+.seeAllUserPet {
+    font-size: 12px!important;
+    line-height: unset;
+    position: absolute;
+    right: 25px;
+    top: 35px;
+    padding: 5px 15px;
+}
 
 /*BLOG SINGLE*/
 

@@ -1,8 +1,16 @@
 <?php require_once 'template.php'; ?>
 
+
+
 <?php function getTitle(){
-    echo "Blogs | PET ME";
+    require 'lib/connection.php';
+    $title = $_GET['article'];
+    $meta = "SELECT * FROM blog WHERE seoTitle = '$title'";
+    $metaRes = mysqli_query($conn,$meta) or die(mysqli_error($conn));
+    $metaRes = mysqli_fetch_assoc($metaRes);
+    echo 'PETME | '.$metaRes['title'];
 } ?>
+
 
 <?php function getMeta() { ?>
 
@@ -13,11 +21,9 @@
         $metaRes = mysqli_query($conn,$meta) or die(mysqli_error($conn));
         $metaRes = mysqli_fetch_assoc($metaRes);
 
-        $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+        $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
      ?>
-    <script>
-        document.title = 'PETME | <?php echo $metaRes['title']; ?>';
-    </script>
+
     <meta name="title" content="PETME | <?php echo $metaRes['title']; ?>">
     <meta name="description" content="<?php echo $metaRes['description']; ?>">
     <meta name="keywords" content="Pet,Adoption,PetCare,findpet">
@@ -54,6 +60,20 @@
 
 <?php function getContent() { ?>
     <?php 
+
+
+        function seoUrl($string) {
+            //Lower case everything
+            $string = strtolower($string);
+            //Make alphanumeric (removes all other characters)
+            $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+            //Clean up multiple dashes or whitespaces
+            $string = preg_replace("/[\s-]+/", " ", $string);
+            //Convert whitespaces and underscore to dash
+            $string = preg_replace("/[\s_]/", "-", $string);
+            return $string;
+        }
+
         require 'vendor/autoload.php';
         require 'lib/blog-endpoint/cloud-config.php';
     ?>
@@ -85,7 +105,7 @@
             ?>
             <?php if (isset($result)): ?>
               
-            <div class="col-xl-9 col-md-12 blog-read">
+            <div class="col-xl-9 col-md-12 blog-read mb-3">
                 
 
                  <?php if ($result['image'] != null): ?>
@@ -129,7 +149,7 @@
                     <div class="float-right social-icon-four clearfix">
                         <span class="share">Share</span>
                         <?php 
-                            $shareLink = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+                            $shareLink = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                          ?>
                         <a href="https://twitter.com/intent/tweet?url=<?php echo $shareLink ?>" target="#_share"><span class="icofont-twitter"></span></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $shareLink ?>" target="#_share"><span class="icofont-facebook"></span></a>
@@ -180,7 +200,7 @@
                
             </div>
 
-            <div class="col-xl-3 col-md-12">
+            <div class="col-xl-3 col-md-12 mb-3">
                 
                 <div class="card p-2 text-white" style="background:#e7470c;">
                     <label class="m-0"><strong>Other Articles</strong></label>
@@ -199,7 +219,7 @@
                             <div class="col-12 p-1">
                                <article class="post">
                                     <figure class="post-thumb">
-                                        <a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>">
+                                        <a href="blog/<?php echo $blog_object['seoTitle'] ?>">
                                             <?php if ($blog_object['image'] != null): ?>
                                                 <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
                                             <?php else: ?>
@@ -208,7 +228,7 @@
                                             
                                         </a>
                                     </figure>
-                                    <div class="text"><a href="read.php?article=<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
+                                    <div class="text"><a href="blog/<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
                                     <div class="post-info"><?php echo date('M',$blog_date) ?> <?php echo date('d',$blog_date) ?>  <?php echo date('Y',$blog_date) ?></div>
                                   
                                 </article>
@@ -221,7 +241,7 @@
                 <div class="card p-2 text-white " style="background:#630abb;">
                     <label class="m-0"><strong>For Adoptions</strong></label>
                 </div>
-                <div class="row w-100 m-0 mt-2">
+                <div class="row w-100 m-0 mt-2 liked-gallery">
                     <?php 
 
                         $listPet = "SELECT * FROM likedpet ORDER BY RAND() LIMIT 6";
@@ -233,7 +253,7 @@
                              ?>
 
                             <div class="col-md-4 col-sm-6 col-6 col-xl-6 p-1">
-                                <a target="#_FromBLOG" href="viewpet.php?petID=save-<?php echo $pet_object['petID'] ?>">
+                                <a target="_blank" href="pets/<?php echo seoUrl($pet_unserialized->animal->name) ?>/save-<?php echo $pet_object['petID'] ?>">
                                     <?php if (isset($pet_unserialized->animal->primary_photo_cropped->full)): ?>
                                         <img class="w-100" src="<?php echo $pet_unserialized->animal->primary_photo_cropped->full ?>" alt="Card image cap" style="height: 120px; object-fit: cover;">
                                     <?php else: ?>
@@ -245,8 +265,9 @@
                         <?php endwhile; ?>
                     
 
-                    <img src="https://st3.depositphotos.com/8992804/32494/v/950/depositphotos_324940358-stock-illustration-postcard-with-dogs-of-different.jpg" class="w-100 mt-2">
+                   
             </div> 
+            <img src="https://st3.depositphotos.com/8992804/32494/v/950/depositphotos_324940358-stock-illustration-postcard-with-dogs-of-different.jpg" class="w-100 mt-2">
 
         </div>
             <?php else: ?>
@@ -271,3 +292,4 @@
     loadBlogComment($('#submit-blog-comment').val())
     $('.header-menu').find('li').eq(2).addClass('active');
 </script>
+

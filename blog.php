@@ -16,14 +16,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="//petme.cf">
+    <meta property="og:url" content="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
     <meta property="og:title" content="Blogs | PET ME">
     <meta property="og:description" content="Read our daily article all about pets, How,What,When ? All about your pet is here.">
     <meta property="og:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/logo/petlogo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="//petme.cf">
+    <meta property="twitter:url" content="<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
     <meta property="twitter:title" content="Blogs | PET ME">
     <meta property="twitter:description" content="Read our daily article all about pets, How,What,When ? All about your pet is here.">
     <meta property="twitter:image" content="//<?php echo $_SERVER['HTTP_HOST'] ?>/assets/images/logo/petlogo.png">
@@ -75,7 +75,7 @@
                                     $date = strtotime($row['date']);
                                  ?>
                                 <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
-                                <a href="read.php?article=<?php echo $row['seoTitle'] ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                <a href="/blog/<?php echo $row['seoTitle'] ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                             </div>
                             <div class="lower-content">
                                 <ul class="news-info">
@@ -83,10 +83,10 @@
                                     <li><?php echo $row['commentCount'] ?> Comment</li>
                                     <li><?php echo $row['likeCount'] ?> Liked</li>
                                 </ul>
-                                <h3><a href="read.php?article=<?php echo $row['seoTitle'] ?>"><?php echo $row['title'] ?></a></h3>
+                                <h3><a href="blog/<?php echo $row['seoTitle'] ?>"><?php echo $row['title'] ?></a></h3>
       
                                 <small class="mb-4" style="display: block;"><?php echo $row['description']. '...'; ?> </small>
-                                <a href="read.php?article=<?php echo $row['seoTitle'] ?>" class="theme-btn btn-style-two">Read More</a>
+                                <a href="blog/<?php echo $row['seoTitle'] ?>" class="theme-btn btn-style-two">Read More</a>
                             </div>
                         </div>
                     </div>

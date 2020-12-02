@@ -9,7 +9,7 @@
 			// PET ID GET FROM THE API
 			$petID = $_POST['petID'];
 			$userID = $_SESSION['OAuthID'];
-
+			
 			// Check if this user is already liked the pet
 			$userCheck = "SELECT * FROM userlikedpet WHERE userID = '$userID' AND petID = '$petID'";
 			$match = mysqli_query($conn,$userCheck);
@@ -54,7 +54,7 @@
 
 					$lovedCount = 1;
 
-					$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
+					$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked,created) VALUES('$petID','$petName','$petObject','$lovedCount')";
 
 					mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 
@@ -76,7 +76,8 @@
 
 	// Saving the user and pet in the liked table
 	function userLikedPet($userID,$petID,$conn){
-		$savedPet = "INSERT INTO userlikedpet(petID,userID) VALUES('$petID','$userID')";
+		$liked_created = date("Y-m-d H:i:s");
+		$savedPet = "INSERT INTO userlikedpet(petID,userID,created) VALUES('$petID','$userID','$liked_created')";
 		mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 	}
 

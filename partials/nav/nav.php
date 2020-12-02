@@ -29,13 +29,13 @@
 		 <div class="header-upper pt-2 pb-4">
 		 	<div class="container">
 		 		<div class="float-left">
-		 			<div class="logo"><a href="index.php"><img src="assets/images/logo/logo.png" alt="" title=""></a></div>
+		 			<div class="logo"><a href="home"><img src="assets/images/logo/logo.png" alt="" title=""></a></div>
 		 		</div>
 		 		<div class="float-right">
 		 			<ul class="header-menu">
-		 				<li onclick="window.location.href='index.php'"><a href="index.php">HOME</a></li>
-		 				<li onclick="window.location.href='pet.php'"><a href="pet.php">PETS</a></li>
-		 				<li onclick="window.location.href='blog.php'"><a href="blog.php">BLOG</a></li>
+		 				<li onclick="window.location.href='home'"><a href="home">HOME</a></li>
+		 				<li onclick="window.location.href='pets'"><a href="pets">PETS</a></li>
+		 				<li onclick="window.location.href='blog'"><a href="blog">BLOG</a></li>
 		 				<?php if (isset($_SESSION['access_token'])): ?>
 		 					<li onclick="window.location.href='profile.php'"><a href="profile.php">ACCOUNT</a></li>
 		 					<li onclick="window.location.href='lib/logout.php'"><a href="lib/logout.php"><i class="icofont-sign-out"></i></a></li>
@@ -71,7 +71,7 @@
 				<div class="w-100 text-center" style="position: relative;">
 					<button class="nav-mobile-search"> <i class="icofont-search"></i></button>
 					<button class="nav-mobile-menu"> <i class="icofont-navigation-menu"></i></button>
-					<div class="logo"><a href="index.php"><img src="assets/images/logo/logo.png" alt="" title=""></a></div>
+					<div class="logo"><a href="home"><img src="assets/images/logo/logo.png" alt="" title=""></a></div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -79,15 +79,15 @@
 
 		<div class="sidebar shadow" data-status="off">
 			<div class="logo py-4 px-3">
-				<a href="index.php"><img src="assets/images/logo/logo.png" alt="" title=""></a>
+				<a href="home"><img src="assets/images/logo/logo.png" alt="" title=""></a>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='index.php'">
+			<div class="w-100 py-3 pl-4 " style="cursor: pointer;"  onclick="window.location.href='home'">
 				<strong>HOME</strong>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='pet.php'" >
+			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='pets'" >
 				<strong>PETS</strong>
 			</div>
-			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='blog.php'">
+			<div class="w-100 py-3 pl-4 " style="cursor: pointer;" onclick="window.location.href='blog'">
 				<strong>BLOG</strong>
 			</div>
 

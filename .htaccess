@@ -1,0 +1,32 @@
+RewriteEngine On
+
+#Blog URL
+RewriteRule ^blog$ /petme/blog.php [L]
+RewriteRule ^blog/([^/]*)$ /petme/read.php?article=$1 [L]
+
+#HOME URL
+RewriteRule ^home$ /petme/index.php [L]
+
+#PET LIST URL
+RewriteRule ^pets$ /petme/pet.php [L]
+
+RewriteEngine On
+RewriteRule ^pets/([^/]*)$ /petme/pet.php?page=$1 [L]
+
+RewriteEngine On
+RewriteRule ^pets/([^/]*)/([^/]*)$ /petme/viewpet.php?Petname=$1&petID=$2 [L]
+
+
+#PET LIST URL
+
+
+#LOGIN URL
+RewriteRule ^login$ /petme/login.php [L]
+
+#Register URL
+RewriteRule ^register$ /petme/register.php [L]
+
+#Profile URL
+RewriteRule ^profile$ /petme/profile.php [L]
+
+

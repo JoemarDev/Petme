@@ -231,3 +231,15 @@ function loadBlogComment(blogID) {
         }
     })
 }
+
+
+function resizeProfileLikedPetImage(){
+    $('.liked-gallery img').each(function(){
+        $(this).height($(this).width());
+    })
+}
+
+resizeProfileLikedPetImage();
+$(window).resize(function(){
+    resizeProfileLikedPetImage();
+})

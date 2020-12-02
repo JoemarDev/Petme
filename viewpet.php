@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta name="author" content="PETME">
-    <?php $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>
+    <?php $fullLink = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
 
     <?php if (isset($_GET['petID'])): ?>
         <?php if (substr($_GET['petID'],0,5) == 'save-'): ?>
@@ -201,7 +201,7 @@
 
     <?php if (isset($pet->animal)): ?>
 
-        <section class="pet-image">
+        <section class="pet-image" id="petcontainer" data-animal-id='<?php echo $pet->animal->id ?>'>
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12" style="position: relative; ">
@@ -404,7 +404,7 @@
                                             </table>
                                         <?php else: ?>
                                             <div class="text-center">
-                                                <small style="color: #ccc;">You need to be <a style="color: #ccc;" href="login.php">Login</a> in order to view the information below.</small>
+                                                <small style="color: #ccc;">You need to be <a style="color: #ccc;" href="/login">Login</a> in order to view the information below.</small>
                                                 <button type="submit" class="theme-btn btn-style-four py-0 w-75 mt-2" onclick="location.href='login.php'">Login</button>
                                             </div>
                                         <?php endif ?>
@@ -451,8 +451,6 @@
 
                     window.history.replaceState('View Pet', 'PET ME | Pet Information', result);
 
-
-                    console.log(result)
                 }
             });
         </script>
@@ -464,6 +462,6 @@
 
 
 <script type="text/javascript">
-    loadPetComment($('#comment-input').attr('data-animal-id'))
+    loadPetComment($('#petcontainer').attr('data-animal-id'))
     $('.header-menu').find('li').eq(1).addClass('active')
 </script>
