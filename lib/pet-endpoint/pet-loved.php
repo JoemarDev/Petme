@@ -14,6 +14,7 @@
 			$userCheck = "SELECT * FROM userlikedpet WHERE userID = '$userID' AND petID = '$petID'";
 			$match = mysqli_query($conn,$userCheck);
 			$matchCount = mysqli_num_rows($match);
+			$created = date("Y-m-d H:i:s");
 			if (mysqli_num_rows($match) == 0) {
 
 				// Check if the pet info is already been saved
@@ -54,7 +55,7 @@
 
 					$lovedCount = 1;
 
-					$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked,created) VALUES('$petID','$petName','$petObject','$lovedCount')";
+					$savedPet = "INSERT INTO likedpet(petID,petName,petObject,petLiked) VALUES('$petID','$petName','$petObject','$lovedCount')";
 
 					mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 

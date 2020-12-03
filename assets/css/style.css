@@ -4,7 +4,7 @@
    font-family: 'Noto Sans KR', sans-serif;
 }
 .container {
-	max-width: 1300px;
+    max-width: 1300px;
 }
 
 .header-menu .active a{
@@ -293,23 +293,23 @@ button:focus {
 }
 
 .header-top-contact {
-	display: flex;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
 }
 
 .header-top-contact li {
-	font-size: 14px;
-	color: #ffffff;
-	font-weight: 500;
-	margin-left: 30px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: 30px;
 }
 
 .social-contact {
-	margin-top: 10px;
-	font-size: 16px!important;
+    margin-top: 10px;
+    font-size: 16px!important;
 }
 
 .main-header .header-upper {
@@ -929,7 +929,7 @@ section i {
 
 .news-block {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 65px;
 }
 
 .news-block .inner-box {
@@ -1009,6 +1009,9 @@ section i {
     font-size: 18px;
     line-height: 1.7em;
     margin-bottom: 12px;
+    height: 50px;
+    display: flex;
+    align-items: center;;
 }
 
 .news-block .inner-box .lower-content h3 a {
@@ -2135,6 +2138,12 @@ ul.petdetails li:before {
 }
 
 
+.activity-image-card img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
 @media (max-width: 1199.98px) {
 
     .banner-content {
@@ -2325,5 +2334,6 @@ ul.petdetails li:before {
     .pet-card-parent {
         padding: 5px 3px;
     }
+
 
 }

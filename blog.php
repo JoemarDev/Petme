@@ -58,9 +58,10 @@
                 require 'lib/connection.php';
                 $fetch_blog = "SELECT * FROM blog ORDER by id DESC";
                 $blogs = mysqli_query($conn,$fetch_blog) or die(mysqli_error($conn));
-
+                $index = 1;
                 while ($row = mysqli_fetch_assoc($blogs)): ?>
-                    <?php 
+                    <?php
+
                         // Check if the post is have main image
                         if ($row['image'] == null) {
                             $image = 'assets/images/background/blog-place-holder.jpg';
@@ -79,7 +80,7 @@
                             </div>
                             <div class="lower-content">
                                 <ul class="news-info">
-                                    <li>Article By <?php echo $row['writer'] ?></li>
+                                    <li>Article By <a href="user/<?php echo $row['writer_id'] ?>"><?php echo $row['writer'] ?></a></li>
                                     <li><?php echo $row['commentCount'] ?> Comment</li>
                                     <li><?php echo $row['likeCount'] ?> Liked</li>
                                 </ul>
@@ -90,6 +91,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php $index++; ?>
 
             <?php endwhile; ?>  
            

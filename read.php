@@ -93,7 +93,7 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container" >
         
         <div class="row mt-5">
            <?php 
@@ -105,7 +105,7 @@
             ?>
             <?php if (isset($result)): ?>
               
-            <div class="col-xl-9 col-md-12 blog-read mb-3">
+            <div class="col-xl-9 col-md-12 blog-read mb-3" id="blog-parent" data-blog-id="<?php echo $result['id']; ?>">
                 
 
                  <?php if ($result['image'] != null): ?>
@@ -200,75 +200,77 @@
                
             </div>
 
-            <div class="col-xl-3 col-md-12 mb-3">
+            <div class="col-xl-3 col-md-12 mb-3" > 
+                <div id="magic-scroll-fixed">
+                    
                 
-                <div class="card p-2 text-white" style="background:#e7470c;">
-                    <label class="m-0"><strong>Other Articles</strong></label>
+                    <div class="card p-2 text-white" style="background:#e7470c;">
+                        <label class="m-0"><strong>Other Articles</strong></label>
+                    </div>
+                    <div class="row w-100 m-0 mt-2 popular-posts">
+                        <?php 
+
+                            $recentList = "SELECT * FROM blog WHERE seoTitle != '$title' ORDER BY RAND() DESC LIMIT 4";
+                            $resList = mysqli_query($conn,$recentList) or die(mysqli_error($conn));
+
+                            while ($blog_object = mysqli_fetch_assoc($resList)): ?>
+
+                                <?php $blog_date = strtotime($blog_object['date']); ?>
+
+
+                                <div class="col-12 p-1">
+                                   <article class="post">
+                                        <figure class="post-thumb">
+                                            <a href="blog/<?php echo $blog_object['seoTitle'] ?>">
+                                                <?php if ($blog_object['image'] != null): ?>
+                                                    <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
+                                                <?php else: ?>
+                                                    <img src="assets/images/background/blog-place-holder.jpg" alt="Image for <?php echo $blog_object['title'] ?>">
+                                                <?php endif ?>
+                                                
+                                            </a>
+                                        </figure>
+                                        <div class="text"><a href="blog/<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
+                                        <div class="post-info"><?php echo date('M',$blog_date) ?> <?php echo date('d',$blog_date) ?>  <?php echo date('Y',$blog_date) ?></div>
+                                      
+                                    </article>
+                                </div>
+                                
+                            <?php endwhile; ?>
+                        
+                    </div>
+
+                    <div class="card p-2 text-white " style="background:#630abb;">
+                        <label class="m-0"><strong>For Adoptions</strong></label>
+                    </div>
+                    <div class="row w-100 m-0 mt-2 liked-gallery">
+                        <?php 
+
+                            $listPet = "SELECT * FROM likedpet ORDER BY RAND() LIMIT 6";
+                            $list = mysqli_query($conn,$listPet) or die(mysqli_error($conn));
+
+                            while ($pet_object = mysqli_fetch_assoc($list)): ?>
+                                <?php 
+                                    $pet_unserialized = unserialize($pet_object['petObject']);
+                                 ?>
+
+                                <div class="col-md-4 col-sm-6 col-6 col-xl-6 p-1">
+                                    <a target="_blank" href="pets/<?php echo seoUrl($pet_unserialized->animal->name) ?>/save-<?php echo $pet_object['petID'] ?>">
+                                        <?php if (isset($pet_unserialized->animal->primary_photo_cropped->full)): ?>
+                                            <img class="w-100" src="<?php echo $pet_unserialized->animal->primary_photo_cropped->full ?>" alt="Card image cap" style="height: 120px; object-fit: cover;">
+                                        <?php else: ?>
+                                            <img class="w-100" src="assets/images/icon/dog-placeholder.gif" alt="Card image cap" style="height: 120px; object-fit: contain;">
+                                        <?php endif ?>
+                                    </a>
+                                </div>
+                                
+                            <?php endwhile; ?>
+                        
+
+                       
+                    </div> 
+                    <img src="https://st3.depositphotos.com/8992804/32494/v/950/depositphotos_324940358-stock-illustration-postcard-with-dogs-of-different.jpg" class="w-100 mt-2">
                 </div>
-                <div class="row w-100 m-0 mt-2 popular-posts">
-                    <?php 
-
-                        $recentList = "SELECT * FROM blog WHERE seoTitle != '$title' ORDER BY RAND() DESC LIMIT 4";
-                        $resList = mysqli_query($conn,$recentList) or die(mysqli_error($conn));
-
-                        while ($blog_object = mysqli_fetch_assoc($resList)): ?>
-
-                            <?php $blog_date = strtotime($blog_object['date']); ?>
-
-
-                            <div class="col-12 p-1">
-                               <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="blog/<?php echo $blog_object['seoTitle'] ?>">
-                                            <?php if ($blog_object['image'] != null): ?>
-                                                <img src="<?php echo $blog_object['image'] ?>" alt="Image for <?php echo $blog_object['title'] ?>">
-                                            <?php else: ?>
-                                                <img src="assets/images/background/blog-place-holder.jpg" alt="Image for <?php echo $blog_object['title'] ?>">
-                                            <?php endif ?>
-                                            
-                                        </a>
-                                    </figure>
-                                    <div class="text"><a href="blog/<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
-                                    <div class="post-info"><?php echo date('M',$blog_date) ?> <?php echo date('d',$blog_date) ?>  <?php echo date('Y',$blog_date) ?></div>
-                                  
-                                </article>
-                            </div>
-                            
-                        <?php endwhile; ?>
-                    
-                </div>
-
-                <div class="card p-2 text-white " style="background:#630abb;">
-                    <label class="m-0"><strong>For Adoptions</strong></label>
-                </div>
-                <div class="row w-100 m-0 mt-2 liked-gallery">
-                    <?php 
-
-                        $listPet = "SELECT * FROM likedpet ORDER BY RAND() LIMIT 6";
-                        $list = mysqli_query($conn,$listPet) or die(mysqli_error($conn));
-
-                        while ($pet_object = mysqli_fetch_assoc($list)): ?>
-                            <?php 
-                                $pet_unserialized = unserialize($pet_object['petObject']);
-                             ?>
-
-                            <div class="col-md-4 col-sm-6 col-6 col-xl-6 p-1">
-                                <a target="_blank" href="pets/<?php echo seoUrl($pet_unserialized->animal->name) ?>/save-<?php echo $pet_object['petID'] ?>">
-                                    <?php if (isset($pet_unserialized->animal->primary_photo_cropped->full)): ?>
-                                        <img class="w-100" src="<?php echo $pet_unserialized->animal->primary_photo_cropped->full ?>" alt="Card image cap" style="height: 120px; object-fit: cover;">
-                                    <?php else: ?>
-                                        <img class="w-100" src="assets/images/icon/dog-placeholder.gif" alt="Card image cap" style="height: 120px; object-fit: contain;">
-                                    <?php endif ?>
-                                </a>
-                            </div>
-                            
-                        <?php endwhile; ?>
-                    
-
-                   
-            </div> 
-            <img src="https://st3.depositphotos.com/8992804/32494/v/950/depositphotos_324940358-stock-illustration-postcard-with-dogs-of-different.jpg" class="w-100 mt-2">
-
         </div>
             <?php else: ?>
                
@@ -289,7 +291,7 @@
 <?php } ?>
 
 <script type="text/javascript">
-    loadBlogComment($('#submit-blog-comment').val())
+    loadBlogComment($('#blog-parent').attr('data-blog-id'));
     $('.header-menu').find('li').eq(2).addClass('active');
 </script>
 

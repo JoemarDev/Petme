@@ -14,9 +14,8 @@
 
 		$comment_username = $user_res['first_name'] .' '.$user_res['last_name'][0].'.';
 
-
-
 		$info = [
+			'userID' => $user_res['oauth_uid'],
 			'picture' => $user_res['picture'],
 			'name' => $comment_username,
 			'comment' => $row['comment'],

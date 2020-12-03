@@ -5,13 +5,13 @@
 	if (isset($_SESSION['access_token'])):
 		// Check if the data is comment
 		if (isset($_POST['comment'])):
+			require '../connection.php';
 			$commentID = $_POST['commentID'];
-			$comment = $_POST['comment'];
+			$comment = mysqli_real_escape_string($conn,$_POST['comment']);
 			$userID = $_SESSION['OAuthID'];
 			$created = date("Y-m-d H:i:s");
 
 
-			require '../connection.php';
 			  $sql = "INSERT INTO blogcomments
 			  	(
 			  		userID,

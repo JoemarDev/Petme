@@ -3,7 +3,7 @@
 	$directory = [
 		'localhost' => 'http://'.$_SERVER['HTTP_HOST'].'/petme/',
 		'petme.cf' => 'https://'.$_SERVER['HTTP_HOST'].'/',
-
+		'192.168.254.122' => 'http://localhost/petme/',
 	];
 
 

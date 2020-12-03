@@ -37,10 +37,10 @@
 		 				<li onclick="window.location.href='pets'"><a href="pets">PETS</a></li>
 		 				<li onclick="window.location.href='blog'"><a href="blog">BLOG</a></li>
 		 				<?php if (isset($_SESSION['access_token'])): ?>
-		 					<li onclick="window.location.href='profile.php'"><a href="profile.php">ACCOUNT</a></li>
+		 					<li onclick="window.location.href='user/<?php echo $_SESSION['OAuthID'] ?>'"><a href="user/<?php echo $_SESSION['OAuthID'] ?>">ACCOUNT</a></li>
 		 					<li onclick="window.location.href='lib/logout.php'"><a href="lib/logout.php"><i class="icofont-sign-out"></i></a></li>
 	 					<?php else: ?>
-	 						<li onclick="window.location.href='login.php'"><a href="login.php">LOGIN</a></li>
+	 						<li onclick="window.location.href='login.php'"><a href="login">LOGIN</a></li>
 		 				<?php endif ?>
 		 			</ul>
 		 		</div>

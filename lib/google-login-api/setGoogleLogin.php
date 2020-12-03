@@ -3,6 +3,7 @@
 	$directory = [
 		'localhost' => 'http://'.$_SERVER['HTTP_HOST'].'/petme/',
 		'petme.cf' => 'https://'.$_SERVER['HTTP_HOST'].'/',
+		'192.168.254.122' => 'http://localhost/petme/',
 
 	];
 
@@ -68,8 +69,8 @@
 				$gender = $data['gender'];
 				$locale = $data['locale'];
 				$picture = $data['picture'];
-				$created = date("YYYY-MM-DD HH:MI:SS");
-				$modified = date("YYYY-MM-DD HH:MI:SS");
+				$created = date("Y-m-d H:i:s");
+				$modified = date("Y-m-d H:i:s");
 
 				$user = "INSERT INTO 
 					users (

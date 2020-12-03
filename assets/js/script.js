@@ -109,7 +109,7 @@ function loadPetComment(petID) {
                     '<li class="media mb-3 pb-3"> <span class="round"> <img src="'+comments[x]['picture']+'" class="align-self-start mr-3"> </span>'+
                          '<div class="media-body">'+
                              '<div class="row d-flex">'+
-                                 '<h6 class="user">'+comments[x]['name']+'</h6>'+
+                                 '<a href="user/'+comments[x]['userID']+'"><h6 class="user">'+comments[x]['name']+'</h6></a>'+
                                  '<div class="ml-auto">'+
                                      '<p class="text">'+comments[x]['time']+'</p>'+
                                  '</div>'+
@@ -213,7 +213,7 @@ function loadBlogComment(blogID) {
                             '<div class="comment">'+
                                 '<div class="author-thumb"><img src="'+comments[x]['picture']+'" alt=""></div>'+
                                     '<div class="comment-inner">'+
-                                        '<div class="comment-info clearfix"><strong>'+comments[x]['name']+'</strong>'+
+                                        '<div class="comment-info clearfix"><a href="user/'+comments[x]['userID']+'"><strong>'+comments[x]['name']+'</strong></a>'+
                                             '<div class="comment-time">'+comments[x]['time']+'</div>'+
                                         '</div>'+
                                         '<div class="text">'+escapeHtml(comments[x]['comment'])+'</div>'+
@@ -240,11 +240,114 @@ function reisizeImage(){
     })
 
 
+
+
 }
 
 reisizeImage();
-
-
 $(window).resize(function(){
+  
     reisizeImage();
 })
+
+
+
+$(document).ready(function(){
+
+    // Get the magic div height
+    let posHeight = $('#magic-scroll-fixed').height();
+
+    // Check if magic elem is scrollable 
+    let magicElemFullH = $('#magic-scroll-fixed').parent().offset().top * 3;
+
+    let allowFixed = (posHeight + magicElemFullH)  < $(document).height();
+
+
+    $(window).resize(function(){
+        initMagicElem(allowFixed)
+    })
+
+    window.addEventListener("scroll",function(){
+        initMagicElem(allowFixed)
+    });
+
+})
+
+
+
+function initMagicElem(allowFixed) {
+    // Get the magic div height
+    let posHeight = $('#magic-scroll-fixed').height();
+
+    // Check if magic elem is scrollable 
+    let magicElemFullH = $('#magic-scroll-fixed').parent().offset().top * 3;
+
+    let magicParent = $('#magic-scroll-fixed').parent().width();
+    if (allowFixed && $(window).width() > 767.98) {
+         // get the magic div widht for so the width of the magic elem does not overlap
+        
+         // Detect the magic element when scroll reach to the end
+         let magicScrollBottom = $('#magic-scroll-fixed').height() - $(window).height() - $(window).scrollTop() + magicParent;
+
+         let magicScrollBottomParent = $('#magic-scroll-fixed').parent().height() - $(window).height() - $(window).scrollTop() + magicParent;
+         $('#magic-scroll-fixed').parent().css({
+            'position' : 'relative',
+        })
+         // Set Paramenter if the magic parent is greater than the window height
+
+
+
+         let top = 'auto';
+         let bottom = 'auto';
+         if (posHeight < $(window).height()) {
+             top = '10px';
+         } else {
+             bottom = '10px';
+         }
+
+        if (magicScrollBottom < 0) {
+
+             // Set Fix postion when reach the bottom of the magic elem
+
+             // Check if the magic elem reach the bottom so it does not overlap in the parent container
+             if (magicScrollBottomParent < 0) {
+                 $('#magic-scroll-fixed').css({
+                     'position' : 'absolute',
+                     'bottom' : 0,
+                     'top' : 'auto',
+                     'width' : magicParent,
+                     'transition' : 'all 0.8s'
+
+                 })
+             } else {
+                 $('#magic-scroll-fixed').css({
+                     'position' : 'fixed',
+                     'bottom' : bottom,
+                     'top' : top,
+                     'width' : magicParent,
+                     'transition' : 'all 0.8s'
+
+                 })
+             }
+
+        } else if(magicScrollBottom > 0){
+         // set static if not reach the bottom of magic elem
+             $('#magic-scroll-fixed').css({
+                 'position' : 'static',
+                 'bottom' : bottom,
+                 'top' : top,
+                 'width' : magicParent,
+                 'transition' : 'all 0.8s'
+
+             })
+        }
+
+    } else {
+        $('#magic-scroll-fixed').css({
+            'position' : 'relative',
+            'top' : '0',
+            'width' : magicParent,
+
+        })
+    }
+}

@@ -14,6 +14,7 @@
 
 
 		$info = [
+			'userID' => $user_res['oauth_uid'],
 			'picture' => $user_res['picture'],
 			'name' => $user_res['first_name'],
 			'comment' => $row['comment'],

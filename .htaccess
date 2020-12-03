@@ -29,4 +29,8 @@ RewriteRule ^register$ /petme/register.php [L]
 #Profile URL
 RewriteRule ^profile$ /petme/profile.php [L]
 
+RewriteEngine On
+RewriteRule ^user/([^/]*)$ /petme/profile.php?user=$1 [L]
+
+
 

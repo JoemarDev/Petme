@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => '1.0.0+no-version-set',
+    'version' => '1.0.0.0',
     'aliases' => 
     array (
     ),
-    'reference' => 'aea271e65a87942617c8f412acc95896f45af0dd',
+    'reference' => NULL,
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => '1.0.0+no-version-set',
+      'version' => '1.0.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'aea271e65a87942617c8f412acc95896f45af0dd',
+      'reference' => NULL,
     ),
     'cloudinary/cloudinary_php' => 
     array (
@@ -59,12 +59,12 @@
     ),
     'google/apiclient-services' => 
     array (
-      'pretty_version' => 'v0.154',
-      'version' => '0.154.0.0',
+      'pretty_version' => 'v0.156',
+      'version' => '0.156.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7f44a314836c444b7894d648c1c49f83fb9d37ca',
+      'reference' => '2f5e54fdef034f856208328126bddd8376dae4b3',
     ),
     'google/auth' => 
     array (
@@ -154,12 +154,12 @@
     ),
     'php-http/discovery' => 
     array (
-      'pretty_version' => '1.12.0',
-      'version' => '1.12.0.0',
+      'pretty_version' => '1.13.0',
+      'version' => '1.13.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4366bf1bc39b663aa87459bd725501d2f1988b6c',
+      'reference' => '788f72d64c43dc361e7fcc7464c3d947c64984a7',
     ),
     'php-http/guzzle6-adapter' => 
     array (
@@ -308,12 +308,12 @@
     ),
     'symfony/options-resolver' => 
     array (
-      'pretty_version' => 'v5.1.8',
-      'version' => '5.1.8.0',
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6a02905e4ffc7a1498e8ee019db2b477cd1cc02',
+      'reference' => '87a2a4a766244e796dd9cb9d6f58c123358cd986',
     ),
     'symfony/polyfill-intl-idn' => 
     array (
@@ -350,6 +350,15 @@
       array (
       ),
       'reference' => 'cede45fcdfabdd6043b3592e83678e42ec69e930',
+    ),
+    'symfony/polyfill-php73' => 
+    array (
+      'pretty_version' => 'v1.20.0',
+      'version' => '1.20.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8ff431c517be11c78c48a39a66d37431e26a6bed',
     ),
     'symfony/polyfill-php80' => 
     array (

@@ -21,12 +21,21 @@ Gmail ✅ ,Facebook ❌
 # Technology
 PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
+# Next Update PET ME Version (0.02)
+
+1. Re-design the blog page ✅
+
+2. Make article button in blog ✅
+
+3. Make a admin dashboard where you can see pending post. ✅
+
+
 # Next Update PET ME Version (0.01)
 
 
 1. Re-Design the pet card ✅
 
-2. Put a activity history in profile page
+2. Put a activity history in profile page ✅
 
 3. Make SEO friendly All Page. ✅
 
