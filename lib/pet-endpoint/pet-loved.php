@@ -80,6 +80,10 @@
 		$liked_created = date("Y-m-d H:i:s");
 		$savedPet = "INSERT INTO userlikedpet(petID,userID,created) VALUES('$petID','$userID','$liked_created')";
 		mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
+
+		$actID  = $conn->insert_id;
+		$savedPet = "INSERT INTO history(type,userID,contentID) VALUES('petliked','$userID','$actID')";
+		mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
 	}
 
 	// Function for fetching data in the API

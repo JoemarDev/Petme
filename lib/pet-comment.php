@@ -24,4 +24,9 @@
 
 	mysqli_query($conn,$sql) or die(mysqli_query($conn));
 
+
+	$actID  = $conn->insert_id;
+	$savedPet = "INSERT INTO history(type,userID,contentID) VALUES('petcomment','$userID','$actID')";
+	mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
+
  ?>

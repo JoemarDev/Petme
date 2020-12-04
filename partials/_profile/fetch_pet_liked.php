@@ -37,7 +37,7 @@
 	  		</div>
 
 	  		<div class="col-sm-9 col-7 align-self-center">
-	  			<h3><?php echo $pet_uns->animal->name ?></h3>
+	  			<h3 style="width: 90%;"><?php echo $pet_uns->animal->name ?></h3>
 	  			<ul style="display: flex;">
             <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon" style="width: 15px;"> Adult</li>
             <li class="m-2"><img src="assets/images/icon/dot.svg" class="icon" style="width: 15px;"> Male </li>

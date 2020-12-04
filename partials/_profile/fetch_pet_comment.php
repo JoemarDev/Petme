@@ -38,7 +38,7 @@
 	  		</div>
 
 	  		<div class="col-sm-9 col-7 align-self-center">
-	  			<h3><?php echo $pet_uns->animal->name ?></h3>
+	  			<h3 style="width: 90%;"><?php echo $pet_uns->animal->name ?></h3>
 	  			<label style="max-width: 90%; padding: 10px; background: #630abb;color :#fff; font-weight : 600; border-radius: 5px; position: relative;">
 	  				<?php echo $key['comment'] ?>
 	  					<div style="height: 20px; width: 20px; position: absolute; left: 15px; background: #630abb; transform: rotate(226deg); z-index: 0px;"></div>

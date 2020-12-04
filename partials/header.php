@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" type="text/css" href="assets/css/default-theme.css">
 
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css?v=85258">
 
 
 <link rel="stylesheet" href="assets/css/icofont/icofont.min.css">

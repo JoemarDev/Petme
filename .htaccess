@@ -3,6 +3,7 @@ RewriteEngine On
 #Blog URL
 RewriteRule ^blog$ /petme/blog.php [L]
 RewriteRule ^blog/([^/]*)$ /petme/read.php?article=$1 [L]
+RewriteRule ^blog/page/([^/]*)$ /petme/blog?page=$1 [L]
 
 #HOME URL
 RewriteRule ^home$ /petme/index.php [L]
@@ -32,5 +33,4 @@ RewriteRule ^profile$ /petme/profile.php [L]
 RewriteEngine On
 RewriteRule ^user/([^/]*)$ /petme/profile.php?user=$1 [L]
 
-
-
+RewriteRule ^blog/page/([^/]*)$ /blog?page=$1 [L]

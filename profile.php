@@ -206,6 +206,10 @@
 		 			<hr>
 		 			<?php require 'partials/_profile/fetch_feed.php'; ?>
 
+		 			<?php if ($feedCount == 0): ?>
+		 				<h3>No acivity to show</h3>
+		 			<?php endif ?>
+		 			
 		 			 <?php foreach ($timeLinehistory as $key): ?>
 		 			 	<?php if ($key['type'] == 'blogComment'): ?>
 		 			 		<?php require 'partials/_profile/fetch_blog_comment.php'; ?>

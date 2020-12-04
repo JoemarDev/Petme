@@ -204,6 +204,7 @@ function loadBlogComment(blogID) {
         success:function(data){
             let comments = JSON.parse(data);
             let commCounts = comments.length;
+            $('.commentCount').html(commCounts)
             if (commCounts > 0) {        
                 $('.comment-list').html('');
                 for(let x = 0; x < commCounts; x++) {

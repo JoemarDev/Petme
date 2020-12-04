@@ -30,7 +30,7 @@
 	 			
 	 		<div class="col-7 col-lg-6 align-self-center">
 	 			
-	 			<h4 style="font-weight: 400" class="my-2">
+	 			<h4 style="font-weight: 400; width: 90%;" class="my-2">
 	 				
 	 				<?php echo $key['title'] ?>
 	 			</h4>

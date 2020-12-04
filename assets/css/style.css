@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 
 * {
    font-family: 'Noto Sans KR', sans-serif;
@@ -2144,6 +2145,53 @@ ul.petdetails li:before {
     border-radius: 3px;
 }
 
+
+.blog-wrapper {
+    height: 400px; 
+    position: relative; 
+    z-index: 1; 
+    text-align: center;
+}
+
+.blog-wrapper .blog-banner {
+    position: absolute; 
+    height: 100%; 
+    width: 100%;  
+    transform: 
+    translate(-50%, -50%); 
+    top: 85%;  
+    left: 50%;
+}
+
+
+.blog-wrapper .blog-banner h1{
+    color: #e7470c ; font-size: 70px;  
+    width: 100%; 
+    font-family: 'Nerko One', 
+    cursive; line-height: 0.8;
+}
+
+.videoBanner-overlay {
+    background: linear-gradient(180deg, transparent, #ffffff ); 
+    width: 100%; 
+    height: 100vh; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    z-index: -4;
+}
+
+.blog-wrapper video {
+    width: 100%; 
+    position: absolute; 
+    top: 0; 
+    z-index: -5 ; 
+    left: 0;  
+    opacity: 0.8;
+    height: 100vh; 
+    object-fit: cover;
+}
+
 @media (max-width: 1199.98px) {
 
     .banner-content {
@@ -2191,6 +2239,10 @@ ul.petdetails li:before {
 
 
 @media (max-width: 767.98px) {
+
+    .blog-wrapper .blog-banner {
+        top: 70%;
+    }
     .banner-content h2{
         font-size: 30px;
     }
@@ -2259,11 +2311,11 @@ ul.petdetails li:before {
     }
 
     .page-title {
-        padding: 50px 20px;
+        padding: 15px 20px;
     }
 
     .page-title .page-breadcrumb li {
-        top: -2px;
+        top: -12px;
     }
 
     .page-title .page-breadcrumb {
@@ -2275,12 +2327,19 @@ ul.petdetails li:before {
         left: 0;
     }
 
+    .page-title .page-breadcrumb {
+        position: relative;
+        margin-bottom: 0px;
+        border-radius: 50px;
+        padding: 8px 0;
+        display: inline-block;
+         border: 0px solid #ffffff; 
+        float: right;
+    }
+
     .bread-parent {
-        width: 100%;
-        float: left!important;
         text-align: left!important;
         position: relative;
-        display: flex;
     }
 
     .pets-container h2 {
@@ -2310,6 +2369,10 @@ ul.petdetails li:before {
         font-size: 25px;
     }
 
+
+    .pet-blog-wrapper  {
+        padding: 0px 15px!important;
+    }
 
 }
 

@@ -25,18 +25,24 @@
                              ?>
                             <div class="news-block col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner-box " >
-                                    <div class="image">
+                                    <div class="image" style="border-radius: 20px;">
                                         <?php 
                                             $date = strtotime($row['date']);
                                          ?>
                                         <div class="post-date"><?php echo date('d',$date) ?> <span><?php echo date('M',$date) ?></span></div>
-                                        <a href="read.php?article=<?php echo $row['seoTitle']; ?>"><img class="w-100" style="height: 350px; object-fit: cover;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
+                                        <a href="read.php?article=<?php echo $row['seoTitle']; ?>"><img class="w-100" style="height: 350px; object-fit: cover; border-radius: 20px;" src="<?php echo $image ?>" alt="Image for <?php echo $row['title'] ?>"></a>
                                     </div>
                                     <div class="lower-content" onclick="location.href='read.php?article=<?php echo $row['seoTitle']; ?>'">
                                         <ul class="news-info">
                                             <li>Article By <?php echo $row['writer'] ?></li>
-                                            <li><?php echo $row['commentCount'] ?> Comment</li>
-                                            <li><?php echo $row['likeCount'] ?> Liked</li>
+                                           <?php 
+                                              // $postContent = render($content); 
+                                              $word = str_word_count(strip_tags($row['content']));
+                                              $m = floor($word / 200);
+                                              $s = floor($word % 200 / (200 / 60));
+                                              $est = $m . ' minute' . ($m == 1 ? '' : 's') . ', ' . $s . ' second' . ($s == 1 ? '' : 's');
+                                            ?>
+                                            <li>reading time:  <?php echo $est; ?></li>
                                         </ul>
                                         <h3><a href="#"><?php echo $row['title'] ?></a></h3>
                     

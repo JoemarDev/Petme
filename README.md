@@ -23,9 +23,9 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
 # Next Update PET ME Version (0.02)
 
-1. Re-design the blog page ❌
+1. Re-design the blog page ✅
 
-2. Make article button in blog ❌
+2. Make article button in blog ✅
 
 3. Make a admin dashboard where you can see pending post. ❌
 

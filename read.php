@@ -104,6 +104,19 @@
                $result = mysqli_fetch_assoc($result);
             ?>
             <?php if (isset($result)): ?>
+
+            <!-- INCREMENT VIEW FOR THIS CONTENT -->
+            <?php 
+                if (empty($_COOKIE[$result['id']])) {
+                   $blog_content_id = $result['id'];
+                   $newViews = $result['views'] + 1;
+                   $inc = "UPDATE blog SET views = '$newViews' WHERE id = '$blog_content_id'";
+                   mysqli_query($conn,$inc) or die(mysqli_error($conn));
+                   setcookie($result['id'] , 'viewincrement' , time() + 30); // 86400 = 1 day
+                }
+               
+             ?>
+
               
             <div class="col-xl-9 col-md-12 blog-read mb-3" id="blog-parent" data-blog-id="<?php echo $result['id']; ?>">
                 
@@ -135,8 +148,9 @@
                     <h3><?php echo $result['title'] ?></h3>
                     <ul class="post-meta">
                         <li>By <?php echo $result['writer'] ?></li>
-                        <li><?php echo $result['commentCount'] ?> Comments</li>
-                        <li><span class="icon icofont-heart-alt"></span>  <?php echo $result['likeCount'] ?></li>
+                        <li><span class="commentCount">0</span> &nbsp; <i class="icofont-comment"></i></li>
+                        <li>
+                            <?php if ($result['views'] > 0):echo  $result['views'];else: echo 0;endif; ?>  &nbsp; <i class="icofont-eye-alt"></i></li>
                     </ul>
                 </div>
                 <div class="content fr-view">
@@ -216,6 +230,14 @@
                             while ($blog_object = mysqli_fetch_assoc($resList)): ?>
 
                                 <?php $blog_date = strtotime($blog_object['date']); ?>
+                                <?php 
+                                   // $postContent = render($content); 
+                                   $word = str_word_count(strip_tags($blog_object['content']));
+                                   $m = floor($word / 200);
+                                   $s = floor($word % 200 / (200 / 60));
+                                   $est = $m . ' minute' . ($m == 1 ? '' : 's') . ', ' . $s . ' second' . ($s == 1 ? '' : 's');
+                                 ?>
+                                 
 
 
                                 <div class="col-12 p-1">
@@ -230,8 +252,9 @@
                                                 
                                             </a>
                                         </figure>
-                                        <div class="text"><a href="blog/<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
+                                        <div class="text" style="width: 100%; overflow: hidden;"><a href="blog/<?php echo $blog_object['seoTitle'] ?>"><?php echo $blog_object['title'] ?></a></div>
                                         <div class="post-info"><?php echo date('M',$blog_date) ?> <?php echo date('d',$blog_date) ?>  <?php echo date('Y',$blog_date) ?></div>
+                                        <div><i class="icofont-read-book"></i> <small><?php echo $est; ?></small></div>
                                       
                                     </article>
                                 </div>

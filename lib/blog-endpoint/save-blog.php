@@ -63,6 +63,11 @@
 			VALUES('$blog_title','$blog_content','$blog_writer','$blog_created',0,0,'$blog_image_url','$linkArr',0,'$blog_seo_title','$blog_description','$blog_writer_id')";
 
 		mysqli_query($conn,$sql) or die(mysqli_error($conn));	
+
+		$actID  = $conn->insert_id;
+		$savedPet = "INSERT INTO history(type,userID,contentID) VALUES('makeblog','$blog_writer_id','$actID')";
+		mysqli_query($conn,$savedPet) or die(mysqli_error($conn));
+
 		header('location: ../../blog.php');
 		
 	else:		
