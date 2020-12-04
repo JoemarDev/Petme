@@ -30,7 +30,7 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 3. Make a admin dashboard where you can see pending post. ❌
 
 
-# Next Update PET ME Version (0.01)
+PET ME Version (0.01)
 
 
 1. Re-Design the pet card ✅
