@@ -28,23 +28,28 @@ Launch demo modal
                     </div>
 
                     <div class="text-input px-4">
-                        <small class="ml-1" style="color: #e5a62d; ">Email</small>
-                        <input 
-                            type="email" 
-                            name="" class="w-100 p-2" 
-                            style="border:none; border-bottom: 1px solid #ccc; font-weight: 600;" 
-                            placeholder="">
+                        <form action="lib/petme/login.php" method="POST">
+                            <small class="ml-1" style="color: #e5a62d; ">Email</small>
+                            <input 
+                                required 
+                                type="email" 
+                                name="" class="w-100 p-2" 
+                                style="border:none; border-bottom: 1px solid #ccc; font-weight: 600;" 
+                                placeholder="">
 
-                        <small class="ml-1" style="color: #e5a62d; ">Password</small>
+                            <small class="ml-1" style="color: #e5a62d; ">Password</small>
 
-                        <input 
-                            type="password" 
-                            name="" 
-                            class="w-100 p-2" 
-                            style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " 
-                            placeholder="">
+                            <input 
+                                required 
+                                type="password" 
+                                name="" 
+                                class="w-100 p-2" 
+                                style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " 
+                                placeholder="">
 
-                        <button type="submit" class="theme-btn btn-style-four w-100 py-1 mt-3">SIGN IN</button>
+                            <button type="submit" class="theme-btn btn-style-four w-100 py-1 mt-3">SIGN IN</button>
+                        </form>
+                       
 
                         <div class="text-center py-3">
                             <small>OR</small>

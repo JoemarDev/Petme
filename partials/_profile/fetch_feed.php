@@ -41,10 +41,13 @@
 			$object = [
 				'date' => $row['date'],
 				'blogID' => $row['id'],
+				'seoTitle' => $row['seoTitle'],
 				'description' => $row['description'],
 				'image' => $row['image'],
 				'title' => $row['title'],
 				'type' => 'blog',
+				'isAllowed' => $row['isAllowed'],
+				'writer_id' => $row['writer_id'],
 			];
 
 			array_push($timeLinehistory,$object);

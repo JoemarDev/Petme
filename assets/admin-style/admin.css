@@ -1,0 +1,45 @@
+.dashboard-left {
+	position: fixed!important;
+	left: 0;
+	top: 0;
+	width: 300px;
+	height: 100vh;
+	overflow: scroll;
+}
+
+.dashboard-left::-webkit-scrollbar {
+  display: none;
+}
+.dashboard-right {
+	position: fixed!important;
+	right: 0;
+	top: 0;
+	width: 300px;
+	height: 100vh;
+}
+
+.dashboard-center {
+	width: 100%;
+	margin: auto;
+	background: red;
+	min-height: 100vh;
+}
+
+.widget {
+	padding: 10px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+}
+
+
+#views_per_day {
+	width: 100%;
+}
+
+.widget-button {
+	width: 50px;
+	float: right;
+	border-radius: 100px;
+	height: 50px;
+	border:1px solid red;
+}

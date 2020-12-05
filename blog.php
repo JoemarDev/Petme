@@ -98,7 +98,7 @@
 
                 $skip = $page * $limit;
 
-                $fetch_blog = "SELECT * FROM blog ORDER by id DESC LIMIT  $skip , $limit";
+                $fetch_blog = "SELECT * FROM blog WHERE isAllowed = '1998' ORDER by id DESC LIMIT  $skip , $limit";
 
                 $blogs = mysqli_query($conn,$fetch_blog) or die(mysqli_error($conn));
 
@@ -129,7 +129,7 @@
                                       $word = str_word_count(strip_tags($row['content']));
                                       $m = floor($word / 200);
                                       $s = floor($word % 200 / (200 / 60));
-                                      $est = $m . ' minute' . ($m == 1 ? '' : 's') . ', ' . $s . ' second' . ($s == 1 ? '' : 's');
+                                      $est = $m . ' min' . ($m == 1 ? '' : 's') . ', ' . $s . ' sec' . ($s == 1 ? '' : 's');
                                     ?>
                                     <li><i class="icofont-read-book"></i> <?php echo $est; ?></li>
                                 </ul>
@@ -149,7 +149,7 @@
 
         <div class="w-100 text-center">
         <?php 
-            $blogP = "SELECT * FROM blog";
+            $blogP = "SELECT * FROM blog  WHERE isAllowed = '1998'";
             $blogPage = mysqli_query($conn,$blogP) or die(mysqli_error($conn));
             $total = ceil(mysqli_num_rows($blogPage) / $limit);
 
@@ -190,33 +190,33 @@
            <div class="pagination">
 
             <?php if ($havePrev): ?>
-                <a href="blog?page=<?php echo $page_limit - 10 ?>"><</a>
+                <a href="blog/page/<?php echo $page_limit - 10 ?>"><</a>
             <?php endif ?>
 
             <?php if ($haveNext): ?>
                 <?php for ($i = $start; $i <=  $page_limit; $i++) : ?>
                     <?php if ($i == $page): ?>
-                            <a class="active" href="blog?page=<?php echo $i ?>"><?php echo $i ?></a>  
+                            <a class="active" href="blog/page/<?php echo $i ?>"><?php echo $i ?></a>  
                         <?php else: ?>  
-                            <a  href="blog?page=<?php echo $i ?>"><?php echo $i ?></a>  
+                            <a  href="blog/page/<?php echo $i ?>"><?php echo $i ?></a>  
                     <?php endif ?>
                     
                 <?php endfor; ?>
             <?php else: ?>
                 <?php for ($i = $start; $i <=  $total; $i++) : ?>
                          <?php if ($i == $page): ?>
-                            <a class="active" href="blog?page=<?php echo $i ?>"><?php echo $i ?></a>  
+                            <a class="active" href="blog/page/<?php echo $i ?>"><?php echo $i ?></a>  
                         <?php else: ?>  
-                            <a  href="blog?page=<?php echo $i ?>"><?php echo $i ?></a>  
+                            <a  href="blog/page/<?php echo $i ?>"><?php echo $i ?></a>  
                     <?php endif ?>
                 <?php endfor; ?>
             <?php endif ?>
 
        
            <?php if ($haveNext): ?>
-                <a href="blog?page=<?php echo $page_limit + 1 ?>">»</a>
+                <a href="blog/page/<?php echo $page_limit + 1 ?>">»</a>
            <?php endif ?>
-
+          
             </div>
         </div>
 

@@ -61,6 +61,13 @@
 
 				GenerateSession($dataID,$fname,$lname,$email,$gender,$picture);
 
+
+				$checkIfAdmin = "SELECT * FROM credentials WHERE Userid = '$dataID' AND email = '$email'";
+				$admin = mysqli_query($conn,$checkIfAdmin) or die(mysqli_error($conn));
+				if (mysqli_num_rows($admin) > 0) {
+					$_SESSION['petme_administrator'] = md5($dataID.$email);
+				};
+				
 			} else {
 				// If the account credentials is not save
 				$fistname = $data['given_name'];
@@ -100,6 +107,12 @@
 				mysqli_query($conn,$user) or die(mysqli_error($conn));	
 
 				GenerateSession($dataID,$fistname,$lastname,$email,$gender,$picture);
+
+				$checkIfAdmin = "SELECT * FROM credentials WHERE Userid = '$dataID' AND email = '$email'";
+				$admin = mysqli_query($conn,$checkIfAdmin) or die(mysqli_error($conn));
+				if (mysqli_num_rows($admin) > 0) {
+					$_SESSION['petme_administrator'] = md5($dataID.$email);
+				};
 			}
 
 
@@ -115,7 +128,6 @@
 		$_SESSION['user_email_address'] = $email;
 		$_SESSION['user_gender'] = $gender;
 		$_SESSION['user_picture'] = $picture;
-
 
 	}
  ?>

@@ -40,7 +40,7 @@
                                               $word = str_word_count(strip_tags($row['content']));
                                               $m = floor($word / 200);
                                               $s = floor($word % 200 / (200 / 60));
-                                              $est = $m . ' minute' . ($m == 1 ? '' : 's') . ', ' . $s . ' second' . ($s == 1 ? '' : 's');
+                                              $est = $m . ' min' . ($m == 1 ? '' : 's') . ', ' . $s . ' sec' . ($s == 1 ? '' : '');
                                             ?>
                                             <li>reading time:  <?php echo $est; ?></li>
                                         </ul>

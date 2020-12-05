@@ -39,14 +39,33 @@
 				<!-- <img src="assets/images/logo/logo.png" alt="" title=""> -->
 			</div>
 			<div class="text-input px-4">
-				<small class="ml-1" style="color: #e5a62d; ">Email</small>
-				<input type="email" name="" class="w-100 p-2" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
-				<small class="ml-1" style="color: #e5a62d; ">Password</small>
-				<input type="password" name="" class="w-100 p-2" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
-				<small class="ml-1" style="color: #e5a62d; ">Repeat Password</small>
-				<input type="password" name="" class="w-100 p-2" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+				<form action="lib/petme/register.php" method="post" id="registerForm">
+					<small class="ml-1" style="color: #e5a62d; ">Email</small>
+					<input required type="email"  name="email" class="w-100 p-2 email-input" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+					<small class="text-danger error-email" style="display: none;">* Email Already Exist</small>
+					<small class="ml-1" style="color: #e5a62d; ">Password</small>
+					<input required type="password" name="password" class="w-100 p-2 pass" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+					<small class="ml-1" style="color: #e5a62d; ">Repeat Password</small>
+					<input required type="password" name="confirm-password" class="w-100 p-2 pass-c" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+					<small class="text-danger error-password" style="display: none;">* Password Don't match</small>
 
-				<button type="submit" class="theme-btn btn-style-four w-100 py-1 mt-3">SIGN UP</button>
+					<small class="ml-1" style="color: #e5a62d; ">First Name</small>
+					<input required type="text" name="first_name" class="w-100 p-2 first_name" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+					<small class="text-danger error-fname" style="display: none;">* This is Required</small>
+					<small class="ml-1" style="color: #e5a62d; ">Last Name</small>
+					<input required type="text" name="last_name" class="w-100 p-2 last_name" style="border:none; border-bottom: 1px solid #ccc; font-weight: 600; " placeholder="">
+					<small class="text-danger error-lname" style="display: none;">* This is Required</small>
+
+					<small class="ml-1" style="color: #e5a62d; ">Gender</small>
+
+					<select class="w-100 p-2" name="gender" style="border-radius: 100px; border:none;">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+
+					<button type="button" class="theme-btn submit-btn btn-style-four w-100 py-1 mt-3">SIGN UP</button>
+				</form>
+				
 				<div class="text-center py-3">
 					<small>OR</small>
 				</div>
@@ -70,5 +89,83 @@
 <?php } ?>
 
 <script type="text/javascript">
+
+	$('.submit-btn').click(function(){
+		let emailFlag = false;
+		let passFlag = false;
+		let fname = false;
+		let lname = false;
+
+		let email = $('.email-input').val();
+		
+		if ($('.pass').val().length != 0 && $('.pass-c').val() != 0) {
+
+			if ($('.pass').val() != $('.pass-c').val()) {
+				passFlag = false;
+				$('.error-password').css({'display' : 'block'});
+				$('.error-password').html('Password Not Match')
+			} else {
+				$('.error-password').hide();
+
+				passFlag = true;
+			}
+		} else {
+			$('.error-password').css({'display' : 'block'});
+			$('.error-password').html('*Password required')
+		}
+
+		if ($('.last_name').val().length != 0) {
+			lname = true;
+			$('.error-fname').css({'display' : 'none'});
+		} else {
+			lname = false;
+			$('.error-fname').css({'display' : 'block'});
+		}
+
+
+		if ($('.first_name').val().length != 0) {
+			fname = true;
+			$('.error-lname').css({'display' : 'none'});
+		} else {
+			fname = false;
+			$('.error-lname').css({'display' : 'block'});
+		}
+
+
+
+		if (email.length != 0) {
+
+			$.ajax({
+				'url' : 'lib/petme/checkEmail.php',
+				'method' : 'post',
+				'data' : {email : email},
+				success:function(data){
+					if (data > 0) {
+						$('.error-email').css({'display' : 'block'});
+						$('.error-email').html('* Email Already Exist')
+						emailFlag = false;
+					} else {
+						$('.error-email').hide();
+						emailFlag = true;
+						if (emailFlag == true  && passFlag == true && fname == true && lname == true) {
+							$('#registerForm').submit();
+						}
+					}
+				} 
+			})
+		} else{
+			emailFlag = false;
+			$('.error-email').css({'display' : 'block'});
+			$('.error-email').html('* Email Required')
+		}
+
+
+
+		
+
+
+	});
+
+
     $('.header-menu').find('li').eq(6).addClass('active')
 </script>
