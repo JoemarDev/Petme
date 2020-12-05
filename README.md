@@ -27,7 +27,7 @@ PHP(VANILLA) | MYSQL | JAVASCRIPT | HTML 5 | CSS |  BOOTSTRAP
 
 2. Make article button in blog ✅
 
-3. Make a admin dashboard where you can see pending post. ❌
+3. Make a admin dashboard where you can see pending post. ✅ ( 50 / 50)
 
 
 PET ME Version (0.01)
