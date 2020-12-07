@@ -42,7 +42,7 @@
 	    			<h2>We Help All Homeless And Abused Pets </h2>
 	    			<p>we promote all social and website for adoption</p>
 
-	    			<a href="about.php" class="theme-btn btn-style-two">About Us.</a>
+	    			<a href="#" class="theme-btn btn-style-two">About Us.</a>
 	    		</div>
 	      		<img class="d-block w-100" src="assets/images/carousel/image-1.jpg" style="max-height: 600px;  object-fit: cover;" alt="First slide">
 	    	</div>

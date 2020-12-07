@@ -2,6 +2,7 @@
 <?php session_start(); ?>
 <html lang="en">
 <head>
+	<meta name="google-site-verification" content="wIKqo5eH36aRS3R8-z5DtUQAI8jVpkD6mrV3rLMzIso" />
 	<base href="/petme/"/>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

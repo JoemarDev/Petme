@@ -1,5 +1,3 @@
-
-
 var viewChart = document.getElementById('views_per_day').getContext('2d');
 var viewChart = new Chart(viewChart, {
     type: 'line',
@@ -7,7 +5,7 @@ var viewChart = new Chart(viewChart, {
         labels: [],
         datasets: [{
             label: 'Visitors',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [],
             backgroundColor: [
                 'rgba(97,8,186,0)',
                 'rgba(97,8,186,0)',
@@ -34,7 +32,61 @@ var viewChart = new Chart(viewChart, {
                     beginAtZero: true
                 }
             }]
-        }
+        },
+        legend: {
+                display: false
+            },
+            tooltips: {
+                callbacks: {
+                   label: function(tooltipItem) {
+                          return tooltipItem.yLabel;
+                   }
+                }
+            }
+    }
+});
+
+
+let historyObject = [];
+$.ajax({
+    url : 'lib/petme/read-article.php',
+    method : 'POST',
+    success:function(data){
+        let viewData = JSON.parse(data);
+        viewData.forEach(function(data){
+           
+            let today = new Date(data.date);
+            let month = monthNames[today.getMonth()];
+            let date = today.getDate();
+            console.log(date)
+            let dataDate = month + ' ' + date;
+
+            if (historyObject.length == 0) {
+                viewChart.data['labels'].push(dataDate);
+                viewChart.data.datasets[0].data.push(1)
+            } else {
+                let lastIndex = viewChart.data.datasets[0].data.length - 1;
+
+                if (dataDate != historyObject[historyObject.length - 1]['date']) {
+                    viewChart.data['labels'].push(dataDate);
+                    viewChart.data.datasets[0].data.push(1)
+                } else {
+                     viewChart.data.datasets[0].data[lastIndex] += 1;
+                }
+            }
+            
+            viewChart.update();
+
+    
+        
+            hisObject = {
+                'date' : month + ' ' + date,
+                'views' : 0,
+            };
+
+            historyObject.push(hisObject);
+        })
+       
     }
 });
 
@@ -148,11 +200,11 @@ for(i = 0; i <= 7; i++) {
     statisticData.push(fullData);
 }
 
-for(x = statisticData.length - 1; x >= 0; x--) {
-    viewChart.data.labels.push(statisticData[x]);
-    comments.data.labels.push(statisticData[x]);
-    articleRead.data.labels.push(statisticData[x]);
-}
+// for(x = statisticData.length - 1; x >= 0; x--) {
+//     // viewChart.data.labels.push(statisticData[x]);
+//     // comments.data.labels.push(statisticData[x]);
+//     // articleRead.data.labels.push(statisticData[x]);
+// }
 
 
 $(document).ready(function(){
@@ -182,16 +234,3 @@ $(document).ready(function(){
         })
     })
 })
-
-// function validateAdmin(){
-//       var person = prompt("Please Type Admin Main Password");
-//       $
-
-//       if (person == null || person == "") {
-//         txt = "User cancelled the prompt.";
-//       } else {
-//         txt = "Hello " + person + "! How are you today?";
-//       }
-// }
-
-
